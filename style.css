@@ -3,11 +3,10 @@
   --secondary-color: #ffffff;
   --accent-color: #ff0000;
   --text-color: #ffffff;
-  --card-bg: #111111;
+  --card-bg: #0d0d0d;
   --main-font: 'Gentium Basic', Georgia, serif;
 }
 
-/* Base Styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -19,7 +18,7 @@ body {
   color: var(--text-color);
   font-family: var(--main-font);
   line-height: 1.6;
-  padding-top: 70px;
+  padding-top: 80px;
 }
 
 /* Sticky Navigation */
@@ -53,7 +52,6 @@ body {
   color: var(--secondary-color);
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.2s;
 }
 
 .nav-links a:hover,
@@ -63,12 +61,11 @@ body {
 
 /* Main Container */
 .container {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 2rem auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 }
 
-/* Dropdown Controls */
 .controls {
   margin-bottom: 2rem;
   display: flex;
@@ -85,82 +82,110 @@ body {
   font-size: 1rem;
 }
 
-/* Full-Width Projects Layout */
+/* Project Cards Stacked Vertically */
 .projects-grid {
   display: flex;
-  flex-direction: column; /* Stacks projects vertically */
-  gap: 3rem; /* Space between different events/projects */
+  flex-direction: column;
+  gap: 4rem;
 }
 
 .project-card {
   background-color: var(--card-bg);
+  border: 1px solid #222;
   border-top: 3px solid var(--accent-color);
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 6px;
-  width: 100%; /* Ensures each project takes full width */
-}
-
-/* Media Grid for Top Section (Videos / Images side by side or stacked) */
-.media-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.media-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.media-item iframe, 
-.media-item img {
   width: 100%;
-  height: 220px;
-  object-fit: cover;
+}
+
+/* Google Sites Style Asymmetrical Media Layout (Video left, thumbnails right) */
+.media-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr; /* Left side slightly wider than right */
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .media-layout {
+    grid-template-columns: 1fr; /* Stacks vertically on small screens/phones */
+  }
+}
+
+.media-main iframe,
+.media-main img {
+  width: 100%;
+  height: 380px;
   border: none;
   border-radius: 4px;
 }
 
+.media-side-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.media-side-item {
+  background-color: #1a1a1a;
+  border: 1px dashed #444;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.media-side-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .media-caption {
   font-size: 0.9rem;
-  color: #ccc;
+  color: #bbb;
   margin-top: 0.5rem;
 }
 
-/* Typography & Links for Project Content */
+/* Google Sites Header Styles */
 .github-link {
-  color: var(--accent-color);
-  font-weight: bold;
+  color: #888;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.github-link a {
+  color: var(--secondary-color);
   text-decoration: underline;
-  margin-bottom: 1rem;
-  display: inline-block;
 }
 
 .project-header-1 {
   font-size: 1.8rem;
   text-align: center;
-  margin: 1rem 0 0.5rem 0;
-  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
 }
 
 .project-header-2 {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   text-align: center;
   font-style: italic;
   margin-bottom: 0.5rem;
-  color: var(--accent-color);
+  font-weight: 400;
 }
 
 .project-header-3 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   text-align: center;
-  font-weight: normal;
-  margin-bottom: 1.5rem;
-  color: #ddd;
+  margin-bottom: 2rem;
+  font-weight: 700;
 }
 
 .project-summary {
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.7;
+  text-align: left;
 }
