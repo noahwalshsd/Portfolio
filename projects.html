@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Portfolio - Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gentium+Basic:wght@400;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">My Portfolio</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Bio & Work</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <h1>My Projects</h1>
+
+    <div class="controls">
+      <label for="sort-select">Sort projects by:</label>
+      <select id="sort-select">
+        <option value="date">Creation Date (Newest First)</option>
+        <option value="pride">Pride Level (Highest First)</option>
+      </select>
+    </div>
+
+    <div id="projects-container" class="projects-grid">
+      
+      <article class="project-card" data-date="2025-06-15" data-pride="8">
+        <img src="https://via.placeholder.com/400x200" alt="Project Cover">
+        <h3>Cool Design Project</h3>
+        <p>A short description of this project.</p>
+      </article>
+
+      <article class="project-card" data-date="2026-01-10" data-pride="10">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" allowfullscreen></iframe>
+        <h3>Video Showcase Project</h3>
+        <p>A cool video project hosted on YouTube.</p>
+      </article>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
