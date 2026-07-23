@@ -1,191 +1,36 @@
-:root {
-  --primary-color: #000000;
-  --secondary-color: #ffffff;
-  --accent-color: #ff0000;
-  --text-color: #ffffff;
-  --card-bg: #0d0d0d;
-  --main-font: 'Gentium Basic', Georgia, serif;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background-color: var(--primary-color);
-  color: var(--text-color);
-  font-family: var(--main-font);
-  line-height: 1.6;
-  padding-top: 80px;
-}
-
-/* Sticky Navigation */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: var(--primary-color);
-  border-bottom: 2px solid var(--accent-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  z-index: 1000;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--secondary-color);
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-links a {
-  color: var(--secondary-color);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--accent-color);
-}
-
-/* Main Container */
-.container {
-  max-width: 1100px;
-  margin: 2rem auto;
-  padding: 0 1.5rem;
-}
-
-.controls {
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.controls select {
-  padding: 0.5rem;
-  background-color: var(--card-bg);
-  color: var(--secondary-color);
-  border: 1px solid var(--accent-color);
-  font-family: var(--main-font);
+/* Project Body Text Spacing */
+.project-body p {
+  margin-bottom: 0.8rem;
   font-size: 1rem;
+  line-height: 1.6;
 }
 
-/* Project Cards Stacked Vertically */
-.projects-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-.project-card {
-  background-color: var(--card-bg);
-  border: 1px solid #222;
-  border-top: 3px solid var(--accent-color);
-  padding: 2.5rem;
-  border-radius: 6px;
-  width: 100%;
-}
-
-/* Google Sites Style Asymmetrical Media Layout (Video left, thumbnails right) */
-.media-layout {
+/* 2x2 Media Grid (Used for Keyboard Project) */
+.media-grid-2x2 {
   display: grid;
-  grid-template-columns: 1.2fr 1fr; /* Left side slightly wider than right */
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-@media (max-width: 768px) {
-  .media-layout {
-    grid-template-columns: 1fr; /* Stacks vertically on small screens/phones */
+.media-grid-2x2 img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .media-grid-2x2 {
+    grid-template-columns: 1fr;
   }
 }
 
-.media-main iframe,
-.media-main img {
-  width: 100%;
-  height: 380px;
-  border: none;
-  border-radius: 4px;
-}
-
-.media-side-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.media-side-item {
-  background-color: #1a1a1a;
-  border: 1px dashed #444;
+/* Height Modifiers for Side Stacks */
+.media-side-item.tall {
   height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  overflow: hidden;
 }
 
-.media-side-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.media-caption {
-  font-size: 0.9rem;
-  color: #bbb;
-  margin-top: 0.5rem;
-}
-
-/* Google Sites Header Styles */
-.github-link {
-  color: #888;
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
-  display: block;
-}
-
-.github-link a {
-  color: var(--secondary-color);
-  text-decoration: underline;
-}
-
-.project-header-1 {
-  font-size: 1.8rem;
-  text-align: center;
-  margin-bottom: 0.5rem;
-  font-weight: 700;
-}
-
-.project-header-2 {
-  font-size: 1.5rem;
-  text-align: center;
-  font-style: italic;
-  margin-bottom: 0.5rem;
-  font-weight: 400;
-}
-
-.project-header-3 {
-  font-size: 1.2rem;
-  text-align: center;
-  margin-bottom: 2rem;
-  font-weight: 700;
-}
-
-.project-summary {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  text-align: left;
+.media-side-item.full-height {
+  height: 380px;
 }
