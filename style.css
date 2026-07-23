@@ -1,6 +1,3 @@
-/* ==========================================================================
-   EASY EDIT VARIABLES
-   ========================================================================== */
 :root {
   --primary-color: #ffffff;
   --secondary-color: #000000;
@@ -24,7 +21,9 @@ body {
   padding-top: 80px;
 }
 
-/* Sticky Navigation */
+/* ==========================================================================
+   STICKY NAVIGATION
+   ========================================================================== */
 .navbar {
   position: fixed;
   top: 0;
@@ -62,14 +61,15 @@ body {
   color: var(--accent-color);
 }
 
-/* Main Container */
+/* ==========================================================================
+   MAIN CONTAINER & CONTROLS
+   ========================================================================== */
 .container {
   max-width: 1100px;
   margin: 2rem auto;
   padding: 0 1.5rem;
 }
 
-/* Controls & Dropdown */
 .controls {
   margin-bottom: 2rem;
   display: flex;
@@ -86,7 +86,84 @@ body {
   font-size: 1rem;
 }
 
-/* Projects Layout */
+/* ==========================================================================
+   BIO & WORK EXPERIENCE PAGE (index.html)
+   ========================================================================== */
+.bio-card {
+  background-color: var(--card-bg);
+  border-bottom: 1px dashed #ccc;
+  padding: 2.5rem 0;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .bio-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.bio-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.company-logo {
+  width: 100%;
+  max-height: 160px;
+  object-fit: contain;
+}
+
+.clean-logo {
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+.photo-caption {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.bio-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.bio-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.job-title {
+  font-size: 1.8rem;
+  font-weight: normal;
+  color: var(--secondary-color);
+  margin-bottom: 1.2rem;
+}
+
+.bio-line {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   PROJECTS PAGE (projects.html)
+   ========================================================================== */
 .projects-grid {
   display: flex;
   flex-direction: column;
@@ -100,7 +177,7 @@ body {
   width: 100%;
 }
 
-/* Media Layouts */
+/* Media Layout (Video left, stacked images right) */
 .media-layout {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -159,7 +236,7 @@ body {
   margin-top: 0.5rem;
 }
 
-/* 2x2 Photo Grid (For Keyboard Project) */
+/* 2x2 Photo Grid */
 .media-grid-2x2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
