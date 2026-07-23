@@ -19,7 +19,7 @@ body {
   color: var(--text-color);
   font-family: var(--main-font);
   line-height: 1.6;
-  padding-top: 70px; /* Space for fixed nav */
+  padding-top: 70px;
 }
 
 /* Sticky Navigation */
@@ -68,21 +68,7 @@ body {
   padding: 0 1rem;
 }
 
-h1, h2 {
-  margin-bottom: 1rem;
-  color: var(--secondary-color);
-}
-
-/* Card Section Styles (Bio / Work) */
-.card {
-  background-color: var(--card-bg);
-  border-left: 4px solid var(--accent-color);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  border-radius: 4px;
-}
-
-/* Projects Grid & Cards */
+/* Dropdown Controls */
 .controls {
   margin-bottom: 2rem;
   display: flex;
@@ -99,27 +85,82 @@ h1, h2 {
   font-size: 1rem;
 }
 
+/* Full-Width Projects Layout */
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  flex-direction: column; /* Stacks projects vertically */
+  gap: 3rem; /* Space between different events/projects */
 }
 
 .project-card {
   background-color: var(--card-bg);
-  border: 1px solid #222;
   border-top: 3px solid var(--accent-color);
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 6px;
+  width: 100%; /* Ensures each project takes full width */
+}
+
+/* Media Grid for Top Section (Videos / Images side by side or stacked) */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.media-item {
   display: flex;
   flex-direction: column;
 }
 
-.project-card img, 
-.project-card iframe {
+.media-item iframe, 
+.media-item img {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
   border: none;
+  border-radius: 4px;
+}
+
+.media-caption {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 0.5rem;
+}
+
+/* Typography & Links for Project Content */
+.github-link {
+  color: var(--accent-color);
+  font-weight: bold;
+  text-decoration: underline;
   margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.project-header-1 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 1rem 0 0.5rem 0;
+  color: var(--secondary-color);
+}
+
+.project-header-2 {
+  font-size: 1.4rem;
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
+}
+
+.project-header-3 {
+  font-size: 1.1rem;
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 1.5rem;
+  color: #ddd;
+}
+
+.project-summary {
+  font-size: 1rem;
+  line-height: 1.7;
 }
