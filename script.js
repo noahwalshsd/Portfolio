@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Sort by Date (newest to oldest)
         return new Date(b.dataset.date) - new Date(a.dataset.date);
       } else if (sortBy === 'pride') {
-        // Sort by Pride rating (highest to lowest)
-        return Number(b.dataset.pride) - Number(a.dataset.pride);
+        // Sort by Pride Rank (lowest number = highest rank)
+        return Number(a.dataset.pride) - Number(b.dataset.pride);
       }
     });
 

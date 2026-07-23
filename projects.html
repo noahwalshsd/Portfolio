@@ -25,54 +25,12 @@
     <div class="controls">
       <label for="sort-select">Sort projects by:</label>
       <select id="sort-select">
+        <option value="pride">Pride Level (Highest/Rank 1 First)</option>
         <option value="date">Creation Date (Newest First)</option>
-        <option value="pride">Pride Level (Highest First)</option>
       </select>
     </div>
 
     <div id="projects-container" class="projects-grid">
-
-      <article class="project-card" data-date="2025-06-01" data-pride="2">
-        <div class="media-layout">
-          <div class="media-main">
-            <iframe src="https://www.youtube.com/embed/ImYCyPfYhdE" title="Testing controls and degrees of freedom" allowfullscreen></iframe>
-            <p class="media-caption">Testing controls and degrees of freedom</p>
-          </div>
-
-          <div class="media-side-stack">
-            <div>
-              <div class="media-side-item">
-                <img src="single-player-mode.jpg" alt="Single Player Mode">
-              </div>
-              <p class="media-caption">Project working in single-player mode against Machine Learning Model</p>
-            </div>
-            <div>
-              <div class="media-side-item">
-                <img src="2-player-mode.jpg" alt="2-Player Mode">
-              </div>
-              <p class="media-caption">Project working in 2-player, versus game mode</p>
-            </div>
-          </div>
-        </div>
-
-        <p class="github-link">
-          Github URL: <a href="https://github.com/loganw023/Sticks-Up/tree/main" target="_blank">https://github.com/loganw023/Sticks-Up/tree/main</a>
-        </p>
-
-        <h2 class="project-header-1">Hack Club's Outpost, 48-hour hackathon Followed by Open Sauce, Attendee;</h2>
-        <h3 class="project-header-2">Stick's Up, a 2D fencing game project</h3>
-        <h4 class="project-header-3">Robotics, Mechanical, Electrical, and ML and Software Engineering</h4>
-
-        <div class="project-body">
-          <p><strong>Project summary:</strong> I was the main CADder and worked significantly on the electricals, especially when it needed repairs. After given the task to create an interactable project in 48 hours, Logan Wheatcroft, Mateo Johnson, and I decided to build a 2-dimensional robot fencing game. The project was finished in the 48hours, but the ML was not deployed in that time frame.</p>
-          
-          <p><strong>Technologies used:</strong> 3D printing, Onshape for CAD, C++, 9G servo motor, RAMPS 1.4 shield, Arduino MEGA, MG996R Servo Motor, NEMA 17 Stepper Motor, 3mm HTD pulley + belt, Drawer slide, CherryMX key switches, Slide potentiometer, 9V batteries, and a USB PB Negotiation Board</p>
-          
-          <p><strong>Process and challenges:</strong> The game had to be easy to learn and very interactable. It also had to be easy to learn for an AI model. We originally considered a 2D primarily to quickly train a computer vision model on Machine Learning. We decided to forgo that in favor of a physics-simulation trained model because it did not need a large database and could easily detect hits through math. The model trained quickly with only 3 degrees of freedom and a very guided learning process. The controls were kept simple, with a sliding potentiometer dictating position along the rail and a three buttons dictating lean forward, back or swing. These controls were very intuitive.</p>
-          
-          <p><strong>Results and impact:</strong> The project was presented at OpenSauce and many Hack Clubbers and some fans played the game.</p>
-        </div>
-      </article>
 
       <article class="project-card" data-date="2025-05-01" data-pride="1">
         <div class="media-layout">
@@ -98,12 +56,71 @@
 
         <div class="project-body">
           <p><strong>Project summary:</strong> In order to compete in STEM-ED's Aerospace Robotics Competition (ARC), I founded SRHS's second team, their development team. From there we built a quadcopter drone designed around picking up and delivering objects to places in short periods of time. We also had to complete routes autonomously.</p>
-          
           <p><strong>Technologies used:</strong> Onshape, C++, VNC, Raspberry Pi OS, Holybro S500 V2 Development Kit, GPS, 3D printing, Raspberry Pi 5 8gb with raspi camera for color recognition, KDE motors and ESCs, Ardupilot's Mission Planner, Pixhawk 6C flight controller, and MG996R servos.</p>
-          
           <p><strong>Process and challenges:</strong> Our second year was plagued by extreme budget deficits, as the original school team's drone's systems broke, requiring their expensive replacements, and the competition's registration increased to $1,000 from $500. This led our team to have a much smaller drone with inferior parts. The inferior drone necessitated maximizing error room in comparison to the drone's components and ultimately prevented the indoor tuning that would have made placing second at nationals much easier.</p>
-          
           <p><strong>Results and impact:</strong> In our first year, the team placed 4th at the San Diego Regional competition, 50 points (5000 total) from 3rd and an invitation to the National Competition; we also earned the Sportsmanship award. In its second year, the team placed 1st at the San Diego Regional, securing the most points at any regional) and Third at the National Competition, despite having a budget roughly 55% of most other teams. We also learned that despite the worst beginnings, comebacks are usually possible; both the beginning of the first Regional Competition and the National Competition were complete disasters).</p>
+        </div>
+      </article>
+
+      <article class="project-card" data-date="2025-06-01" data-pride="2">
+        <div class="media-layout">
+          <div class="media-main">
+            <iframe src="https://www.youtube.com/embed/ImYCyPfYhdE" title="Testing controls and degrees of freedom" allowfullscreen></iframe>
+            <p class="media-caption">Testing controls and degrees of freedom</p>
+          </div>
+
+          <div class="media-side-stack">
+            <div>
+              <div class="media-side-item">
+                <div style="font-size: 2rem; color: #555;">+</div>
+              </div>
+              <p class="media-caption">Project working in single-player mode against Machine Learning Model</p>
+            </div>
+            <div>
+              <div class="media-side-item">
+                <div style="font-size: 2rem; color: #555;">+</div>
+              </div>
+              <p class="media-caption">Project working in 2-player, versus game mode</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="github-link">
+          Github URL: <a href="https://github.com/loganw023/Sticks-Up/tree/main" target="_blank">https://github.com/loganw023/Sticks-Up/tree/main</a>
+        </p>
+
+        <h2 class="project-header-1">Hack Club's Outpost, 48-hour hackathon Followed by Open Sauce, Attendee;</h2>
+        <h3 class="project-header-2">Stick's Up, a 2D fencing game project</h3>
+        <h4 class="project-header-3">Robotics, Mechanical, Electrical, and ML and Software Engineering</h4>
+
+        <div class="project-body">
+          <p><strong>Project summary:</strong> I was the main CADder and worked significantly on the electricals, especially when it needed repairs. After given the task to create an interactable project in 48 hours, Logan Wheatcroft, Mateo Johnson, and I decided to build a 2-dimensional robot fencing game. The project was finished in the 48hours, but the ML was not deployed in that time frame.</p>
+          <p><strong>Technologies used:</strong> 3D printing, Onshape for CAD, C++, 9G servo motor, RAMPS 1.4 shield, Arduino MEGA, MG996R Servo Motor, NEMA 17 Stepper Motor, 3mm HTD pulley + belt, Drawer slide, CherryMX key switches, Slide potentiometer, 9V batteries, and a USB PB Negotiation Board</p>
+          <p><strong>Process and challenges:</strong> The game had to be easy to learn and very interactable. It also had to be easy to learn for an AI model. We originally considered a 2D primarily to quickly train a computer vision model on Machine Learning. We decided to forgo that in favor of a physics-simulation trained model because it did not need a large database and could easily detect hits through math. The model trained quickly with only 3 degrees of freedom and a very guided learning process. The controls were kept simple, with a sliding potentiometer dictating position along the rail and a three buttons dictating lean forward, back or swing. These controls were very intuitive.</p>
+          <p><strong>Results and impact:</strong> The project was presented at OpenSauce and many Hack Clubbers and some fans played the game.</p>
+        </div>
+      </article>
+
+      <article class="project-card" data-date="2024-01-01" data-pride="3">
+        <div class="media-grid-2x2">
+          <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQVuzsIce5gw3NT8j-9QjjL38fX2I6Acsd-GliEBFToPAv4XGI_jLkT9WIIMovXtTxjN5mkRQBCVB87z8Ldp6X0CFZL-5b_mS-uX6wyxyzbI2OFnnGnZQACQew7bjdX05FlVWLLLk_D1OscwJi8cjTNN96IMHt4WCg8ocVEoMIGFYCFJIeLNwAbg-yPtIHDoDbeZpAhvS5YFGp9LblBiaTI2heGuEYGRCleW7FK-dyw=w1280" alt="Keyboard CAD Model">
+          <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQWzWTbcPIx3Lx2Zi82YlEZlcvusgTBuua6kF-OkeCwVHvmpNA2DWx4X8nOWBc2ZzICi4UcnoDHr3gO5BECe7K5uL0M9Tx26lAY5q-fSx2bhEUpJR845qWQy9En1QXgDt4PDuvz5_xACEJ3EPox0NArbc4j-w_YG40VzfWwsqhVtsIkK91Ki8V5hsKT_6blJa0rxcQrAdCyRK8gcWBGz5UgxXUZPvjo14aglsNEvH2o=w1280" alt="Schematic Circuit Diagram">
+          <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQWRaYpTtwY_Xxw8vs_UGTEYVQ7k-fSwKEFVSdPcRpvPcwdeQQFOo_dEo3EN7mF_RBUjTkdUUhwIB-ls62_mDSwm1rGlchLwSqDH6jaTtmq2NFS42aT45zgw1zcgtrvK13xO2GX5ts6R8cgmTX_og-J8qr_RAzwneGvroaTP_eJZe9WlrrFXKJ0JHZSb3qUB6fPKV_6MBXehJHZvHkodE2B6N37Tq1SAQcfMh40E=w1280" alt="Physical Built Keyboard">
+          <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQW-oGkznRrTYGAnh0Z34FMTzs8QhIbcQyZ1Mq6cP6lEGu38B-rRb9SuPYOI_HTvWN18f-tqEFy1K5Rttt4dlkH_2I5HGmhOLQuc_dqxbhztOQmny2xoJFFWwGieSAriJvVPxsMTy9kp-MBh-0qB3g8jT7_xVJFcvbMMo_horUKO6stgKj0bbzHie_yXw-sOhPHu80d_0xYg6UwgPEbWS5AaC4pOHqbuhwTU4Y6M=w1280" alt="PCB Layout Design">
+        </div>
+
+        <p class="github-link">
+          Github URL: <a href="https://github.com/noahwalshsd/Keyboard/tree/main" target="_blank">https://github.com/noahwalshsd/Keyboard/tree/main</a>
+        </p>
+
+        <h2 class="project-header-1">Ortholinear Keyboard Project</h2>
+        <h4 class="project-header-3">Mechanical, Electrical, Software Engineering</h4>
+
+        <div class="project-body">
+          <p><strong>Project title and summary:</strong> This was my first PCB project. I built it from a macropad guide.</p>
+          <p><strong>Technologies used:</strong> Python, KiCad, Onshape, JLCPCB, Thonny, Raspberry Pi 2040 board, CHERRYMX switches</p>
+          <p><strong>Process and challenges:</strong> I did not know how to make PCBs, literally did not know of PCBs. I ended up using a macropad guide so that I did not follow it completely, making something on my own.</p>
+          <p><strong>Results and impact:</strong> I created a PCB project, learned how to use KiCad, and how to debug using Thonny.</p>
         </div>
       </article>
 
@@ -126,38 +143,9 @@
 
         <div class="project-body">
           <p><strong>Project summary:</strong> Two others and I trained a Robot arm to stack custom cups. I CADed the cups and the grippers for maximum performance.</p>
-          
           <p><strong>Technologies used:</strong> Hugging Face's SO101 arm, AMD GPUs and systems, Onshape, Thonny, Jupyter Notebook</p>
-          
           <p><strong>Process and challenges:</strong> This was the first project I had that utilized Linux terminals and Thonny. This also taught me the Basics of AI/ML and sparked my love for mechatronics.</p>
-          
           <p><strong>Results and impact:</strong> Though we did not place (we were likely nowhere close), I learned significantly about training AI models. You must teach them like you are teaching chess: you must show the basics, then you can build up; work with the simple things first; take steps.</p>
-        </div>
-      </article>
-
-      <article class="project-card" data-date="2024-01-01" data-pride="3">
-        <div class="media-grid-2x2">
-          <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQVuzsIce5gw3NT8j-9QjjL38fX2I6Acsd-GliEBFToPAv4XGI_jLkT9WIIMovXtTxjN5mkRQBCVB87z8Ldp6X0CFZL-5b_mS-uX6wyxyzbI2OFnnGnZQACQew7bjdX05FlVWLLLk_D1OscwJi8cjTNN96IMHt4WCg8ocVEoMIGFYCFJIeLNwAbg-yPtIHDoDbeZpAhvS5YFGp9LblBiaTI2heGuEYGRCleW7FK-dyw=w1280" alt="Keyboard CAD Model">
-          <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQWzWTbcPIx3Lx2Zi82YlEZlcvusgTBuua6kF-OkeCwVHvmpNA2DWx4X8nOWBc2ZzICi4UcnoDHr3gO5BECe7K5uL0M9Tx26lAY5q-fSx2bhEUpJR845qWQy9En1QXgDt4PDuvz5_xACEJ3EPox0NArbc4j-w_YG40VzfWwsqhVtsIkK91Ki8V5hsKT_6blJa0rxcQrAdCyRK8gcWBGz5UgxXUZPvjo14aglsNEvH2o=w1280" alt="Schematic Circuit Diagram">
-          <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQWRaYpTtwY_Xxw8vs_UGTEYVQ7k-fSwKEFVSdPcRpvPcwdeQQFOo_dEo3EN7mF_RBUjTkdUUhwIB-ls62_mDSwm1rGlchLwSqDH6jaTtmq2NFS42aT45zgw1zcgtrvK13xO2GX5ts6R8cgmTX_og-J8qr_RAzwneGvroaTP_eJZe9WlrrFXKJ0JHZSb3qUB6fPKV_6MBXehJHZvHkodE2B6N37Tq1SAQcfMh40E=w1280" alt="Physical Built Keyboard">
-          <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQW-oGkznRrTYGAnh0Z34FMTzs8QhIbcQyZ1Mq6cP6lEGu38B-rRb9SuPYOI_HTvWN18f-tqEFy1K5Rttt4dlkH_2I5HGmhOLQuc_dqxbhztOQmny2xoJFFWwGieSAriJvVPxsMTy9kp-MBh-0qB3g8jT7_xVJFcvbMMo_horUKO6stgKj0bbzHie_yXw-sOhPHu80d_0xYg6UwgPEbWS5AaC4pOHqbuhwTU4Y6M=w1280" alt="PCB Layout Design">
-        </div>
-
-        <p class="github-link">
-          Github URL: <a href="https://github.com/noahwalshsd/Keyboard/tree/main" target="_blank">https://github.com/noahwalshsd/Keyboard/tree/main</a>
-        </p>
-
-        <h2 class="project-header-1">Ortholinear Keyboard Project</h2>
-        <h4 class="project-header-3">Mechanical, Electrical, Software Engineering</h4>
-
-        <div class="project-body">
-          <p><strong>Project title and summary:</strong> This was my first PCB project. I built it from a macropad guide.</p>
-          
-          <p><strong>Technologies used:</strong> Python, KiCad, Onshape, JLCPCB, Thonny, Raspberry Pi 2040 board, CHERRYMX switches</p>
-          
-          <p><strong>Process and challenges:</strong> I did not know how to make PCBs, literally did not know of PCBs. I ended up using a macropad guide so that I did not follow it completely, making something on my own.</p>
-          
-          <p><strong>Results and impact:</strong> I created a PCB project, learned how to use KiCad, and how to debug using Thonny.</p>
         </div>
       </article>
 
