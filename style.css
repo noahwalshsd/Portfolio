@@ -1,6 +1,6 @@
 :root {
-  --primary-color: #ffffff;
-  --secondary-color: #000000;
+  --primary-color: #000000;
+  --secondary-color: #ffffff;
   --accent-color: #ff0000;
   --text-color: #222222;
   --card-bg: #ffffff;
@@ -14,23 +14,20 @@
 }
 
 body {
-  background-color: var(--primary-color);
+  background-color: #ffffff;
   color: var(--text-color);
   font-family: var(--main-font);
   line-height: 1.6;
   padding-top: 80px;
 }
 
-/* ==========================================================================
-   STICKY NAVIGATION
-   ========================================================================== */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   background-color: var(--primary-color);
-  border-bottom: 2px solid #eee;
+  border-bottom: 3px solid var(--accent-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,13 +58,16 @@ body {
   color: var(--accent-color);
 }
 
-/* ==========================================================================
-   MAIN CONTAINER & CONTROLS
-   ========================================================================== */
 .container {
   max-width: 1100px;
   margin: 2rem auto;
   padding: 0 1.5rem;
+}
+
+.container h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: #000000;
 }
 
 .controls {
@@ -80,18 +80,15 @@ body {
 .controls select {
   padding: 0.5rem;
   background-color: #f9f9f9;
-  color: var(--secondary-color);
+  color: #000000;
   border: 1px solid #ccc;
   font-family: var(--main-font);
   font-size: 1rem;
 }
 
-/* ==========================================================================
-   BIO & WORK EXPERIENCE PAGE (index.html)
-   ========================================================================== */
 .bio-card {
   background-color: var(--card-bg);
-  border-bottom: 1px dashed #ccc;
+  border-bottom: 2px solid var(--accent-color);
   padding: 2.5rem 0;
   display: grid;
   grid-template-columns: 320px 1fr;
@@ -143,14 +140,14 @@ body {
 .bio-title {
   font-size: 2.2rem;
   font-weight: bold;
-  color: var(--secondary-color);
+  color: #000000;
   margin-bottom: 1rem;
 }
 
 .job-title {
   font-size: 1.8rem;
   font-weight: normal;
-  color: var(--secondary-color);
+  color: #000000;
   margin-bottom: 1.2rem;
 }
 
@@ -161,23 +158,19 @@ body {
   line-height: 1.6;
 }
 
-/* ==========================================================================
-   PROJECTS PAGE (projects.html)
-   ========================================================================== */
 .projects-grid {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 3rem;
 }
 
 .project-card {
   background-color: var(--card-bg);
-  border-bottom: 1px dashed #ccc;
+  border-bottom: 2px solid var(--accent-color);
   padding: 2.5rem 0;
   width: 100%;
 }
 
-/* Media Layout (Video left, stacked images right) */
 .media-layout {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -236,7 +229,6 @@ body {
   margin-top: 0.5rem;
 }
 
-/* 2x2 Photo Grid */
 .media-grid-2x2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -258,7 +250,6 @@ body {
   }
 }
 
-/* Typography & Headers */
 .github-link {
   color: #555;
   font-size: 0.95rem;
@@ -276,7 +267,7 @@ body {
   text-align: center;
   margin-bottom: 0.5rem;
   font-weight: 700;
-  color: var(--secondary-color);
+  color: #000000;
 }
 
 .project-header-2 {
@@ -285,7 +276,7 @@ body {
   font-style: italic;
   margin-bottom: 0.5rem;
   font-weight: 400;
-  color: var(--secondary-color);
+  color: #000000;
 }
 
 .project-header-3 {
@@ -293,7 +284,7 @@ body {
   text-align: center;
   margin-bottom: 2rem;
   font-weight: 700;
-  color: #444;
+  color: #333333;
 }
 
 .project-body p {
@@ -301,4 +292,5 @@ body {
   line-height: 1.7;
   text-align: left;
   margin-bottom: 1rem;
+  color: #222222;
 }
