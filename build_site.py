@@ -9,22 +9,53 @@ def format_text_block(text):
     if not isinstance(text, str) or not text.strip():
         return ""
     
-    # Split text blocks separated by double line breaks
     paragraphs = [p.strip() for p in text.strip().split('\n\n') if p.strip()]
     formatted_paragraphs = []
 
     for p in paragraphs:
-        # Automatically bold common section titles if present
         p_html = re.sub(
             r'^(Project summary:|Technologies used:|Process and challenges:|Results and impact:|Project title and summary:|Projectand summary:)', 
             r'<strong>\1</strong>', 
             p
         )
-        # Convert single newlines inside paragraph to break tags
         p_html = p_html.replace('\n', '<br>')
         formatted_paragraphs.append(f"          <p>{p_html}</p>")
 
     return "\n".join(formatted_paragraphs)
+
+
+def get_media_element(url, caption=""):
+    """Determines whether a link is a YouTube video or an Image and returns proper HTML."""
+    if not isinstance(url, str) or not url.strip() or url.strip().lower() == 'nan':
+        return ""
+
+    url = url.strip()
+    caption_html = f'<p class="media-caption">{caption.strip()}</p>' if isinstance(caption, str) and caption.strip() and caption.strip().lower() != 'nan' else ''
+
+    # Handle YouTube Videos
+    if "youtube.com" in url or "youtu.be" in url:
+        # Convert youtube watch URL to embed URL
+        video_id = ""
+        if "watch?v=" in url:
+            video_id = url.split("watch?v=")[1].split("&")[0]
+        elif "youtu.be/" in url:
+            video_id = url.split("youtu.be/")[1].split("?")[0]
+        
+        embed_url = f"https://www.youtube.com/embed/{video_id}" if video_id else url
+
+        return f"""
+          <div class="media-main">
+            <iframe src="{embed_url}" title="Project Video" allowfullscreen></iframe>
+            {caption_html}
+          </div>"""
+    
+    # Handle Images
+    else:
+        return f"""
+          <div class="media-main">
+            <img src="{url}" alt="Project Media">
+            {caption_html}
+          </div>"""
 
 
 def build_index_html(df_main):
@@ -32,21 +63,24 @@ def build_index_html(df_main):
     bio_cards_html = ""
 
     for idx, row in df_main.iterrows():
-        img_url = str(row.get('Image address', '')).strip()
+        img_url = str(row.get('Img1 address', '')).strip()
+        img_caption = str(row.get('Img1 caption', '')).strip()
         title = str(row.get('Title', '')).strip()
         raw_text = str(row.get('Text', '')).strip()
         row_type = str(row.get('Number / type', '')).lower()
 
-        # Format lines inside the bio box
+        caption_html = f'<p class="photo-caption">{img_caption}</p>' if img_caption and img_caption.lower() != 'nan' else ''
+
+        # Clean text lines
+        raw_text = raw_text.strip('"')
         text_lines = [f'<p class="bio-line">{line.strip()}</p>' for line in raw_text.split('\n') if line.strip()]
         formatted_lines_html = "\n          ".join(text_lines)
 
-        # Distinguish between Bio card and Work experience cards
         if 'bio' in row_type or idx == 0:
             card = f"""    <section class="bio-card">
       <div class="bio-left">
         <img src="{img_url}" alt="{title}" class="profile-photo">
-        <p class="photo-caption">Noah Walsh Portfolio</p>
+        {caption_html}
       </div>
       <div class="bio-right">
         <h1 class="bio-title">{title}</h1>
@@ -107,7 +141,7 @@ def build_projects_html(df_projects):
     project_cards_html = ""
 
     for _, row in df_projects.iterrows():
-        # Date handling
+        # Date parsing
         raw_date = row.get('Creation Date', '')
         if isinstance(raw_date, (pd.Timestamp, datetime.date)):
             date_str = raw_date.strftime('%Y-%m-%d')
@@ -123,19 +157,34 @@ def build_projects_html(df_projects):
         if not title or title.lower() == 'nan':
             continue
 
-        # Split title/subtitle if separated by semicolon
+        # Extract Media slots 1 to 4 and Captions 1 to 4
+        media_html_items = []
+        for i in range(1, 5):
+            addr_col = f'Vid or photo address {i}'
+            cap_col = f'Vid or photo caption {i}'
+            media_item = get_media_element(row.get(addr_col, ''), row.get(cap_col, ''))
+            if media_item:
+                media_html_items.append(media_item)
+
+        media_layout_html = ""
+        if media_html_items:
+            combined_media = "\n".join(media_html_items)
+            media_layout_html = f"""        <div class="media-layout">
+{combined_media}
+        </div>\n"""
+
+        # Title formatting
         title_parts = title.split(';')
         main_header = title_parts[0].strip()
         sub_header = f'        <h3 class="project-header-2"><em>{title_parts[1].strip()}</em></h3>\n' if len(title_parts) > 1 else ''
 
-        # GitHub URL markup
+        # Github link formatting
         github_markup = f'        <p class="github-link">Github URL: <a href="{github_url}" target="_blank">{github_url}</a></p>\n' if github_url and github_url.lower() != 'nan' else ''
 
-        # Formatted main text
         formatted_body = format_text_block(main_text)
 
         card = f"""      <article class="project-card" data-date="{date_str}" data-pride="{pride_rank}">
-{github_markup}        <h2 class="project-header-1">{main_header}</h2>
+{media_layout_html}{github_markup}        <h2 class="project-header-1">{main_header}</h2>
 {sub_header}        <h4 class="project-header-3">{disciplines}</h4>
 
         <div class="project-body">
@@ -194,21 +243,22 @@ def main():
     try:
         xls = pd.ExcelFile(EXCEL_FILE)
         
-        # Load sheets (fallback to sheet index if tab names vary slightly)
-        df_projects = pd.read_excel(xls, sheet_name=0 if len(xls.sheet_names) == 1 else 0)
-        df_main = pd.read_excel(xls, sheet_name=1 if len(xls.sheet_names) > 1 else 0)
+        df_projects = None
+        df_main = None
 
-        # Detect sheets by content if needed
+        # Automatically identify sheets by column headers
         for sheet in xls.sheet_names:
             temp_df = pd.read_excel(xls, sheet_name=sheet)
             temp_df.columns = temp_df.columns.str.strip()
             if 'Disciplines' in temp_df.columns or 'Main Text' in temp_df.columns:
                 df_projects = temp_df
-            elif 'Number / type' in temp_df.columns or 'Image address' in temp_df.columns:
+            elif 'Number / type' in temp_df.columns or 'Img1 address' in temp_df.columns:
                 df_main = temp_df
 
-        build_index_html(df_main)
-        build_projects_html(df_projects)
+        if df_main is not None:
+            build_index_html(df_main)
+        if df_projects is not None:
+            build_projects_html(df_projects)
 
     except FileNotFoundError:
         print(f"Error: Could not find '{EXCEL_FILE}' in this directory.")
