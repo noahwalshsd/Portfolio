@@ -139,7 +139,7 @@ body {
   border-color: var(--card-hover-border);
 }
 
-/* Showcase Top Bio Card */
+/* Bio Showcase Card */
 .showcase-card {
   display: grid;
   grid-template-columns: 320px 1fr;
@@ -154,10 +154,10 @@ body {
   gap: 1.5rem;
 }
 
-/* Work Experience Cards */
+/* Work Experience Cards - Strictly enforced grid width for all cards */
 .work-card {
   display: grid;
-  grid-template-columns: 240px 1fr; /* Equal width column for all logos */
+  grid-template-columns: 240px 1fr;
   gap: 2.5rem;
   padding: 2rem;
   align-items: center;
@@ -172,19 +172,22 @@ body {
 
 /* --- MEDIA & LOGO CONTAINER STYLING --- */
 .card-media {
-  width: 100%;
-  height: 120px; /* Fixed height for equal proportions */
+  width: 240px;            /* Fixed width matching column */
+  height: 120px;           /* Fixed uniform height for all logos */
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px; /* Smooth rounded corners on container */
-  overflow: hidden; /* Clips any image edges or white backgrounds */
+  background-color: #16161c; /* Soft dark container backing */
+  border-radius: 12px;      /* Rounds container and clipped edges */
+  overflow: hidden;
 }
 
-/* Bio Photo Specific (Stretches Full Height) */
+/* Top Showcase card overrides height for profile photo */
 .showcase-card .card-media {
+  width: 100%;
   height: 100%;
   min-height: 280px;
+  background-color: transparent;
 }
 
 .profile-photo-uncut {
@@ -195,11 +198,11 @@ body {
   display: block;
 }
 
-/* Logotype Images (Equal Width & Proportionally Centered) */
+/* Logos forced to scale proportionally inside uniform container */
 .logo-uncut {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Proportional scaling without distortion */
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
   border-radius: 12px;
   display: block;
 }
