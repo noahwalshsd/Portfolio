@@ -1,10 +1,12 @@
 :root {
-  --primary-color: #0d0d11;       /* Dark luxury header/nav background */
-  --secondary-color: #ffffff;     /* Bright text for headers and links */
-  --accent-color: #d5001c;        /* Porsche Red accent line */
-  --text-color: #e1e1e6;          /* Clean light text for high readability */
-  --card-bg: #141419;             /* Obsidian dark card background */
-  --border-color: #22222a;        /* Subtle dark card separation border */
+  --primary-color: #0d0d11;
+  --secondary-color: #ffffff;
+  --accent-color: #d5001c;        /* Porsche Red */
+  --text-color: #e1e1e6;
+  --text-muted: #9e9ea7;
+  --card-bg: #141419;
+  --border-color: #22222a;
+  --border-hover: #383845;
   --main-font: 'Gentium Basic', Georgia, serif;
 }
 
@@ -15,45 +17,52 @@
 }
 
 body {
-  background-color: #08080a;     /* Deep dark background */
+  background-color: #08080a;
   color: var(--text-color);
   font-family: var(--main-font);
   line-height: 1.6;
   padding-top: 80px;
 }
 
+/* --- NAVBAR --- */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: var(--primary-color);
-  border-bottom: 3px solid var(--accent-color);
+  background-color: rgba(13, 13, 17, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--accent-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1rem 2.5rem;
   z-index: 1000;
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: var(--secondary-color);
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .nav-links a {
-  color: #9e9ea7;
+  color: var(--text-muted);
   text-decoration: none;
-  font-weight: bold;
-  transition: color 0.2s ease;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  transition: color 0.25s ease;
 }
 
 .nav-links a:hover,
@@ -63,48 +72,89 @@ body {
 
 .nav-links a.active {
   border-bottom: 2px solid var(--accent-color);
-  padding-bottom: 2px;
+  padding-bottom: 4px;
 }
 
-.container {
+/* --- HERO SECTION --- */
+.hero-section {
   max-width: 1100px;
-  margin: 2rem auto;
+  margin: 2rem auto 0.5rem auto;
   padding: 0 1.5rem;
 }
 
-.container h1 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
+.hero-subtitle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  margin-bottom: 0.3rem;
+}
+
+.hero-title {
+  font-size: 2.6rem;
+  font-weight: bold;
   color: var(--secondary-color);
+}
+
+/* --- CONTAINER & CONTROLS --- */
+.container {
+  max-width: 1100px;
+  margin: 1.5rem auto 4rem auto;
+  padding: 0 1.5rem;
 }
 
 .controls {
   margin-bottom: 2rem;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.controls label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
 .controls select {
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   background-color: #1a1a22;
   color: var(--secondary-color);
   border: 1px solid var(--border-color);
-  font-family: var(--main-font);
-  font-size: 1rem;
   border-radius: 4px;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.controls select:focus {
+  border-color: var(--accent-color);
+}
+
+/* --- CARDS --- */
+.bio-card,
+.project-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-bottom: 3px solid var(--accent-color);
+  padding: 2.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  transition: border-color 0.3s ease;
 }
 
 .bio-card {
-  background-color: var(--card-bg);
-  border-bottom: 2px solid var(--accent-color);
-  padding: 2.5rem;
-  margin-bottom: 2rem;
-  border-radius: 6px;
   display: grid;
   grid-template-columns: 320px 1fr;
   gap: 2.5rem;
   align-items: start;
+}
+
+.project-card:hover,
+.bio-card:hover {
+  border-color: var(--border-hover);
+  border-bottom-color: var(--accent-color);
 }
 
 @media (max-width: 768px) {
@@ -114,16 +164,12 @@ body {
   }
 }
 
-.bio-left {
-  display: flex;
-  flex-direction: column;
-}
-
+/* --- MEDIA & LAYOUTS --- */
 .profile-photo {
   width: 100%;
-  height: 250px;
+  height: 260px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 6px;
   border: 1px solid var(--border-color);
 }
 
@@ -133,62 +179,19 @@ body {
   object-fit: contain;
 }
 
-.clean-logo {
-  background-color: transparent !important;
-  padding: 0 !important;
-}
-
-.photo-caption {
+.photo-caption,
+.media-caption {
   font-size: 0.85rem;
-  color: #8e8e98;
-  margin-top: 0.5rem;
-}
-
-.bio-right {
-  display: flex;
-  flex-direction: column;
-}
-
-.bio-title {
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: var(--secondary-color);
-  margin-bottom: 1rem;
-}
-
-.job-title {
-  font-size: 1.8rem;
-  font-weight: normal;
-  color: var(--secondary-color);
-  margin-bottom: 1.2rem;
-}
-
-.bio-line {
-  margin-bottom: 1rem;
-  font-size: 1.05rem;
-  color: var(--text-color);
-  line-height: 1.6;
-}
-
-.projects-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
-
-.project-card {
-  background-color: var(--card-bg);
-  border-bottom: 2px solid var(--accent-color);
-  padding: 2.5rem;
-  border-radius: 6px;
-  width: 100%;
+  color: var(--text-muted);
+  margin-top: 0.6rem;
+  text-align: center;
 }
 
 .media-layout {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 @media (max-width: 768px) {
@@ -200,34 +203,27 @@ body {
 .media-main iframe,
 .media-main img {
   width: 100%;
-  height: 380px;
+  height: 360px;
   object-fit: cover;
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .media-side-stack {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .media-side-item {
   background-color: #181820;
   border: 1px dashed var(--border-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
 .media-side-item.tall {
-  height: 180px;
-}
-
-.media-side-item.full-height {
-  height: 380px;
+  height: 170px;
 }
 
 .media-side-item img {
@@ -236,74 +232,100 @@ body {
   object-fit: cover;
 }
 
-.media-caption {
-  font-size: 0.9rem;
-  color: #8e8e98;
-  margin-top: 0.5rem;
-}
-
 .media-grid-2x2 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
 .media-grid-2x2 img {
   width: 100%;
-  height: 220px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 6px;
   border: 1px solid var(--border-color);
 }
 
-@media (max-width: 600px) {
-  .media-grid-2x2 {
-    grid-template-columns: 1fr;
-  }
+/* --- CARD META & BADGES --- */
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .github-link {
-  color: #a0a0ab;
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
-  display: block;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .github-link a {
-  color: var(--accent-color);
+  color: var(--secondary-color);
   text-decoration: underline;
+}
+
+/* --- HEADERS & TYPOGRAPHY --- */
+.bio-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.job-title {
+  font-size: 1.8rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
 }
 
 .project-header-1 {
   font-size: 1.8rem;
   text-align: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   font-weight: 700;
   color: var(--secondary-color);
 }
 
 .project-header-2 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   text-align: center;
   font-style: italic;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   font-weight: 400;
   color: var(--text-color);
 }
 
 .project-header-3 {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   text-align: center;
-  margin-bottom: 2rem;
-  font-weight: 700;
-  color: #b0b0bb;
+  margin-bottom: 1.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.project-body p {
+.project-body p,
+.bio-line {
   font-size: 1.05rem;
   line-height: 1.7;
-  text-align: left;
   margin-bottom: 1rem;
   color: var(--text-color);
+}
+
+.project-body strong {
+  color: var(--secondary-color);
 }

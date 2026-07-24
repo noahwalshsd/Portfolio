@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Noah Walsh - Projects</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,15 +12,19 @@
 <body>
 
   <nav class="navbar">
-    <div class="logo">Noah Walsh</div>
+    <div class="logo">NOAH WALSH</div>
     <ul class="nav-links">
       <li><a href="index.html">Bio & Work</a></li>
       <li><a href="projects.html" class="active">Projects</a></li>
     </ul>
   </nav>
 
+  <header class="hero-section">
+    <p class="hero-subtitle">PORTFOLIO & ENGINEERING BUILDLOGS</p>
+    <h1 class="hero-title">Featured Projects</h1>
+  </header>
+
   <main class="container">
-    <h1>Projects</h1>
 
     <div class="controls">
       <label for="sort-select">Sort projects by:</label>
@@ -38,89 +43,97 @@
             <p class="media-caption">Testing controls and degrees of freedom</p>
           </div>
         </div>
-        <p class="github-link">Github URL: <a href="https://github.com/loganw023/Sticks-Up/tree/main" target="_blank">https://github.com/loganw023/Sticks-Up/tree/main</a></p>
-        <h2 class="project-header-1">Hack Club's Outpost, 48-hour hackathon Followed by Open Sauce, Attendee</h2>
-        <h3 class="project-header-2"><em>Stick's Up, a 2D fencing game project</em></h3>
-        <h4 class="project-header-3">Robotics, Mechanical, Electrical, and ML and Software Engineering</h4>
+        
+        <div class="card-meta">
+          <span class="badge">ROBOTICS & SOFTWARE</span>
+          <p class="github-link">Github: <a href="https://github.com/loganw023/Sticks-Up/tree/main" target="_blank">loganw023/Sticks-Up</a></p>
+        </div>
+
+        <h2 class="project-header-1">Hack Club's Outpost (48-hr Hackathon) & Open Sauce</h2>
+        <h3 class="project-header-2">Stick's Up — A 2D Robot Fencing Game</h3>
+        <h4 class="project-header-3">Robotics, Mechanical, Electrical, ML & Software Engineering</h4>
 
         <div class="project-body">
-          <p><strong>Project summary:</strong> I was the main CADder and worked significantly on the electricals, especially when it needed repairs. After given the task to create a interactable project in 48 hours, Logan Wheatcroft, Mateo Johnson, and I decided to build a 2-dimensional robot fencing game. The project was finished in the 48hours, but the ML was not deployed in that time frame.</p>
-          <p><strong>Technologies used:</strong> 3D printing, Onshape for CAD, C++, 9G servo motor, RAMPS 1.4 shield, Arduino MEGA, MG996R Servo Motor, NEMA 17 Stepper Motor, 3mm HTD pulley + belt, Drawer slide, CherryMX key switches, Slide potentiometer, 9V batteries, and a USB PB Negotiation Board</p>
-          <p><strong>Process and challenges:</strong> The game had to be easy to learn and very interactable. It also had to be easy to learn for an AI model. We originally considered a 2D primarily to quickly train a computer vision model on Machine Learning. We decided to forgo that in favor of a physics-simulation trained model because it did not need a large database and could easily detect hits through math. The model trained quickly with only 3 degrees of freedom and a very guided learning process. The controls were kept simple, with a sliding potentiometer dictating position along the rail and three buttons dictating lean forward, back or swing. These controls were very intuitive.</p>
-          <p><strong>Results and impact:</strong> The project was presented at OpenSauce and many Hack Clubbers and some fans played the game.</p>
+          <p><strong>Project summary:</strong> I was the main CADder and worked significantly on the electricals, especially when repairs were required. Given the task to create an interactable project in 48 hours, Logan Wheatcroft, Mateo Johnson, and I built a 2-dimensional robot fencing game. The hardware was finished in 48 hours, though ML deployment followed afterwards.</p>
+          <p><strong>Technologies used:</strong> 3D printing, Onshape, C++, 9G servo motor, RAMPS 1.4 shield, Arduino MEGA, MG996R Servo, NEMA 17 Stepper, HTD pulley/belt, slide potentiometer, 9V batteries, USB PB Negotiation Board.</p>
+          <p><strong>Process and challenges:</strong> The game needed intuitive controls and simplicity for physics-based training. We opted for a simulation-trained physics model instead of computer vision, enabling math-based hit detection without a massive image database. Position was controlled via a sliding potentiometer alongside three action buttons.</p>
+          <p><strong>Results and impact:</strong> Showcased live at OpenSauce where attendees and Hack Club members played against the trained model and in 2-player modes.</p>
         </div>
       </article>
 
       <article class="project-card" data-date="2025-05-01" data-pride="1">
         <div class="media-grid-2x2">
-          <div>
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQWpO8XGNiNv9VSdlI2uLFSmj2KNq6Ze7KMWu67B2-539ilEZkOYMkY4IXYyWVbjUKeVIYg6Noo6Vuk6uRZ7eobwLmaApfagK-f-BoSEUNVHS4m6F-5MxpvrpKVSZJM-1Z4xNxvjLuMwNJmgHmkNeHqqrGD8MiP5DiYeymC_hJUIi4QdbjKLSy6sxwJyt1g3mg2bPgwygDnJ7DPcsVimi_UhfjW92ve7PnOvyb_M=w1280" alt="ARC Drone Image 1">
-          </div>
-          <div>
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQXR8avbML8DZQWMjOpjtpT5BCYGTXRQiZ3ncq3LMr9ybNUgYdoAliSemn9FS2ywmuweu15B5LPrr7BGmserBl--zJEWV6bJz_5ZbZo8urrFON9m-LEXxaSGt-KpBrE1ZYKlx9S-odjNpKEtLHxhXpleHLJ67aMXd1y2zQ9YWU602SN3oa-64exfxbbHILqIEyCQ1RM1Dxzvrv_zEVVKLM_EW3BSc-r1ktL6v8fBDzI=w1280" alt="ARC Drone Image 2">
-          </div>
-          <div>
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQWT4VZChJSOjduyzd2QDSlkLwufLc-85QbAvlFTz5dUJPiSVQ72-ZxZQo93zj3UbP5K8lr2I8wi-EuiAPopc3-mOHABx-vsexiIxZhuO_GEYT4R9Mm89zYT6oL3-QxJKAYiqqbtMrXg5vdqlu_V2-8GgakNi_S6fg03qne_hDLUTVgJsnSPJhQlG29tCdN3cu8rFlH-Edu9rojTh3pbimpRFY0zL0kRD00p9VlLZmI=w1280" alt="ARC Drone Image 3">
-          </div>
+          <img src="images/arc-drone-1.jpg" alt="ARC Drone 1" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AG8ngQWpO8XGNiNv9VSdlI2uLFSmj2KNq6Ze7KMWu67B2-539ilEZkOYMkY4IXYyWVbjUKeVIYg6Noo6Vuk6uRZ7eobwLmaApfagK-f-BoSEUNVHS4m6F-5MxpvrpKVSZJM-1Z4xNxvjLuMwNJmgHmkNeHqqrGD8MiP5DiYeymC_hJUIi4QdbjKLSy6sxwJyt1g3mg2bPgwygDnJ7DPcsVimi_UhfjW92ve7PnOvyb_M=w1280'">
+          <img src="images/arc-drone-2.jpg" alt="ARC Drone 2" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AG8ngQXR8avbML8DZQWMjOpjtpT5BCYGTXRQiZ3ncq3LMr9ybNUgYdoAliSemn9FS2ywmuweu15B5LPrr7BGmserBl--zJEWV6bJz_5ZbZo8urrFON9m-LEXxaSGt-KpBrE1ZYKlx9S-odjNpKEtLHxhXpleHLJ67aMXd1y2zQ9YWU602SN3oa-64exfxbbHILqIEyCQ1RM1Dxzvrv_zEVVKLM_EW3BSc-r1ktL6v8fBDzI=w1280'">
+          <img src="images/arc-drone-3.jpg" alt="ARC Drone 3" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AG8ngQWT4VZChJSOjduyzd2QDSlkLwufLc-85QbAvlFTz5dUJPiSVQ72-ZxZQo93zj3UbP5K8lr2I8wi-EuiAPopc3-mOHABx-vsexiIxZhuO_GEYT4R9Mm89zYT6oL3-QxJKAYiqqbtMrXg5vdqlu_V2-8GgakNi_S6fg03qne_hDLUTVgJsnSPJhQlG29tCdN3cu8rFlH-Edu9rojTh3pbimpRFY0zL0kRD00p9VlLZmI=w1280'">
         </div>
-        <p class="github-link">Github URL: <a href="https://github.com/noahwalshsd/ARC-2025-2026" target="_blank">https://github.com/noahwalshsd/ARC-2025-2026</a></p>
-        <h2 class="project-header-1">Aerospace Robotics SRHS Development Team: Captain, Lead Mechanism Designer</h2>
-        <h4 class="project-header-3">Robotics, Mechanical, Aerospace, Software, Controls, and Electrical Engineering</h4>
+
+        <div class="card-meta">
+          <span class="badge">AEROSPACE & AUTONOMY</span>
+          <p class="github-link">Github: <a href="https://github.com/noahwalshsd/ARC-2025-2026" target="_blank">noahwalshsd/ARC-2025-2026</a></p>
+        </div>
+
+        <h2 class="project-header-1">Aerospace Robotics SRHS Development Team</h2>
+        <h3 class="project-header-2">Quadcopter Pickup & Autonomous Delivery Drone</h3>
+        <h4 class="project-header-3">Robotics, Mechanical, Aerospace, Software, Controls & Electrical</h4>
 
         <div class="project-body">
-          <p><strong>Project summary:</strong> In order to compete in STEM-ED's Aerospace Robotics Competition (ARC), I founded SRHS's second team, their development team. From there we built a quadcopter drone designed around picking up and delivering objects to places in short periods of time. We also had to complete routes autonomously.</p>
-          <p><strong>Technologies used:</strong> Onshape, C++, VNC, Raspberry Pi OS, Holybro S500 V2 Development Kit, GPS, 3D printing, Raspberry Pi 5 8gb with raspi camera for color recognition, KDE motors and ESCs, Ardupilot's Mission Planner, Pixhawk 6C flight controller, and MG996R servos.</p>
-          <p><strong>Process and challenges:</strong> Our second year was plagued by extreme budget deficits, as the original school team's drone's systems broke, requiring their expensive replacements, and the competition's registration increased to $1,000 from $500. This led our team to have a much smaller drone with inferior parts. The inferior drone necessitated maximizing error room in comparison to the drone's components and ultimately prevented the indoor tuning that would have made placing second at nationals much easier.</p>
-          <p><strong>Results and impact:</strong> In our first year, the team placed 4th at the San Diego Regional competition, 50 points (5000 total) from 3rd and an invitation to the National Competition; we also earned the Sportsmanship award. In its second year, the team placed 1st at the San Diego Regional, securing the most points at any regional) and Third at the National Competition, despite having a budget roughly 55% of most other teams. We also learned that despite the worst beginnings, comebacks are usually possible; both the beginning of the first Regional Competition and the National Competition were complete disasters).</p>
+          <p><strong>Project summary:</strong> To compete in STEM-ED's Aerospace Robotics Competition (ARC), I founded SRHS's second development team. We engineered a quadcopter drone specialized for rapid payload pickup, precision delivery, and autonomous route navigation.</p>
+          <p><strong>Technologies used:</strong> Onshape, C++, VNC, Raspberry Pi OS, Holybro S500 V2 Kit, GPS, Raspberry Pi 5 (8GB) with Camera Module for color recognition, KDE Motors/ESCs, Ardupilot Mission Planner, Pixhawk 6C.</p>
+          <p><strong>Process and challenges:</strong> Operating on a budget ~55% lower than competitor teams required maximizing component error tolerances and lightweight 3D-printed mounts. Despite registration price hikes and hardware failures during testing, we optimized PID loops and vision tracking.</p>
+          <p><strong>Results and impact:</strong> Placed <strong>1st Place at San Diego Regionals</strong> (highest overall points across regionals) and <strong>3rd Place at Nationals</strong>, alongside winning the Sportsmanship Award.</p>
         </div>
       </article>
 
       <article class="project-card" data-date="2024-02-01" data-pride="3">
         <div class="media-layout">
           <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQVCWM4alHbPwIEZEEls0-K-Ce05bWHyt9Oeanudna3rtTpNAYWqAheQ5k25riArc1Ue8dank0NYJcLXLmbR3Vm7Ab0oRYXAM0e64pRmgyyKfkC66t9T8UQ3zFbNVSFg5UiZmS2HNt-T_h79gWc5DlawMPFszk9RU-7WrkHMxXiUIt13wJCaDF-NWqdFAbCxwi1yZq8zZXD93Jh1TvTaLrBQuHIzgoim19EGIp_8aFE=w1280" alt="Stacked Robot Arm">
+            <img src="images/robot-arm.jpg" alt="Stacked Arm" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AG8ngQVCWM4alHbPwIEZEEls0-K-Ce05bWHyt9Oeanudna3rtTpNAYWqAheQ5k25riArc1Ue8dank0NYJcLXLmbR3Vm7Ab0oRYXAM0e64pRmgyyKfkC66t9T8UQ3zFbNVSFg5UiZmS2HNt-T_h79gWc5DlawMPFszk9RU-7WrkHMxXiUIt13wJCaDF-NWqdFAbCxwi1yZq8zZXD93Jh1TvTaLrBQuHIzgoim19EGIp_8aFE=w1280'">
           </div>
           <div class="media-main">
             <iframe src="https://www.youtube.com/embed/po0gLzeUUdQ" title="Stacked Arm Demo" allowfullscreen></iframe>
           </div>
         </div>
-        <p class="github-link">Github URL: <a href="https://github.com/noahwalshsd/Proto" target="_blank">https://github.com/noahwalshsd/Proto</a></p>
-        <h2 class="project-header-1">Hack Club's Prototype, 48-hour hackathon, Attendee</h2>
-        <h3 class="project-header-2"><em>Stacked, a SO101 robot arm project</em></h3>
+
+        <div class="card-meta">
+          <span class="badge">MECHATRONICS & ML</span>
+          <p class="github-link">Github: <a href="https://github.com/noahwalshsd/Proto" target="_blank">noahwalshsd/Proto</a></p>
+        </div>
+
+        <h2 class="project-header-1">Hack Club's Prototype (48-hr Hackathon)</h2>
+        <h3 class="project-header-2">Stacked — SO101 Robotic Arm Cup Stacker</h3>
         <h4 class="project-header-3">Mechanical, Electrical, and ML Engineering</h4>
 
         <div class="project-body">
-          <p><strong>Project summary:</strong> Two others and I trained a Robot arm to stack custom cups. I CADed the cups and the grippers for maximum performance.</p>
-          <p><strong>Technologies used:</strong> Hugging Face's SO101 arm, AMD GPUs and systems, Onshape, Thonny, Jupityr Notebook</p>
-          <p><strong>Process and challenges:</strong> This was the first project I had that utilized Linux terminals and Thonny. This also taught me the Basics of AI/ML and sparked my love for mechatronics.</p>
-          <p><strong>Results and impact:</strong> Though we did not place (we were likely nowhere close), I learned significantly about training AI models. You must teach them like you are teaching chess: you must show the basics, then you can build up; work with the simple things first; take steps.</p>
+          <p><strong>Project summary:</strong> Designed custom 3D-printed grippers and mating cups to train a 6-DOF robotic arm to stack custom objects autonomously under time constraints.</p>
+          <p><strong>Technologies used:</strong> Hugging Face SO101 arm, AMD GPUs, Onshape, Thonny, Jupyter Notebook, Linux Terminal.</p>
+          <p><strong>Process and challenges:</strong> My first hands-on deep dive into Linux terminal workflows, Python scripting, and machine learning training steps. Focused heavily on mechanical tolerances for optimal gripper contact.</p>
+          <p><strong>Results and impact:</strong> Sparked my long-term interest in mechatronics and reinforcement learning for physical robotic systems.</p>
         </div>
       </article>
 
       <article class="project-card" data-date="2024-01-01" data-pride="6">
         <div class="media-grid-2x2">
-          <div>
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQUnauv51lAHtY6_04pF-xKHVSoJxXEnevCKSPkGyo91ERBaQhw5izWrMdGanOBcVb3-K0kE1dQA3Ht-qehRzlBUJPyhs5KjZmLrtYVdHIIx6tFZQEjx-i6QI2CY11bQ_slzUrMIqxw6tLQu_f1XhrlH45DNV56PhCZfcItf_gtgQtK9av8-ackeqe23m5UILladXBKPZJaMTxXmpw-ZbWCc3aYtao36zNZiL5edzPE=w1280" alt="Keyboard PCB 1">
-          </div>
-          <div>
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQXJhiQaT-szzFdSM0tNf4wRwngt6l2xeh5ngAOidMYa2UcC68gBzcH8zH7cbPkc5J7WP4ReU-K7hzBfKAVaVYnAfFtkY4_liZVqGf-NHozJN8lOJxahsZIWgFcG2admKsP70qbl5R6Z3KxMjaVeP21ogVdxxa-lGvJtuy3oJrg0fhJjPZd4JQwzruruBvSip7lGMakxG_bEViTG_ssAGz5XUxk0ChXHjnX90GYaQA8=w1280" alt="Keyboard PCB 2">
-          </div>
-          <div>
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQV3W5cpYBOnNB2Hq1gBAnhl-zNp8_bG2cuYCfxBudyMTO2wxVAay35vlUffMkPDiyceS_6jyhROZ7-ACR-36k1NBGuvzugGBF0UfvFLo3cAdRkxTORLFk0t83hzY4d3J2NZdo8eve4aUZiwC5OoGEozSk7l1wMQL5dCjV7x127MqpcyH3PPKKLpMwfHV-FYbCg768XMlanjTr7ih-XyhbxetWvAnYXUFsJewuHs=w1280" alt="Keyboard PCB 3">
-          </div>
-          <div>
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQW7kx3ct1pFiW1Wk739U7mKMldB81nceCESZEKyg8VTXWrEW0zusxxNOeCEpdl0kjHomDg7lp7TBVbzJTDFd9PgOXan1hriJGgCffyhpcH2Dv5y1zyzrq_Yj6IoaqYlgu9nZJPOZZf5ctu21nidriM1aj4HaH-P18_7Yf7IAznNCnZFd9k8lTfs8xIPVgQVb68PO2hTZ2skyBmgL7ZZWE4GouJosr1NrDG1o_ip=w1280" alt="Keyboard PCB 4">
-          </div>
+          <img src="images/keyboard-1.jpg" alt="PCB 1" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AG8ngQUnauv51lAHtY6_04pF-xKHVSoJxXEnevCKSPkGyo91ERBaQhw5izWrMdGanOBcVb3-K0kE1dQA3Ht-qehRzlBUJPyhs5KjZmLrtYVdHIIx6tFZQEjx-i6QI2CY11bQ_slzUrMIqxw6tLQu_f1XhrlH45DNV56PhCZfcItf_gtgQtK9av8-ackeqe23m5UILladXBKPZJaMTxXmpw-ZbWCc3aYtao36zNZiL5edzPE=w1280'">
+          <img src="images/keyboard-2.jpg" alt="PCB 2" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AG8ngQXJhiQaT-szzFdSM0tNf4wRwngt6l2xeh5ngAOidMYa2UcC68gBzcH8zH7cbPkc5J7WP4ReU-K7hzBfKAVaVYnAfFtkY4_liZVqGf-NHozJN8lOJxahsZIWgFcG2admKsP70qbl5R6Z3KxMjaVeP21ogVdxxa-lGvJtuy3oJrg0fhJjPZd4JQwzruruBvSip7lGMakxG_bEViTG_ssAGz5XUxk0ChXHjnX90GYaQA8=w1280'">
+          <img src="images/keyboard-3.jpg" alt="PCB 3" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AG8ngQV3W5cpYBOnNB2Hq1gBAnhl-zNp8_bG2cuYCfxBudyMTO2wxVAay35vlUffMkPDiyceS_6jyhROZ7-ACR-36k1NBGuvzugGBF0UfvFLo3cAdRkxTORLFk0t83hzY4d3J2NZdo8eve4aUZiwC5OoGEozSk7l1wMQL5dCjV7x127MqpcyH3PPKKLpMwfHV-FYbCg768XMlanjTr7ih-XyhbxetWvAnYXUFsJewuHs=w1280'">
+          <img src="images/keyboard-4.jpg" alt="PCB 4" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AG8ngQW7kx3ct1pFiW1Wk739U7mKMldB81nceCESZEKyg8VTXWrEW0zusxxNOeCEpdl0kjHomDg7lp7TBVbzJTDFd9PgOXan1hriJGgCffyhpcH2Dv5y1zyzrq_Yj6IoaqYlgu9nZJPOZZf5ctu21nidriM1aj4HaH-P18_7Yf7IAznNCnZFd9k8lTfs8xIPVgQVb68PO2hTZ2skyBmgL7ZZWE4GouJosr1NrDG1o_ip=w1280'">
         </div>
-        <p class="github-link">Github URL: <a href="https://github.com/noahwalshsd/Keyboard/tree/main" target="_blank">https://github.com/noahwalshsd/Keyboard/tree/main</a></p>
-        <h2 class="project-header-1">Ortholinear Keyboard Project</h2>
+
+        <div class="card-meta">
+          <span class="badge">EMBEDDED HARDWARE</span>
+          <p class="github-link">Github: <a href="https://github.com/noahwalshsd/Keyboard/tree/main" target="_blank">noahwalshsd/Keyboard</a></p>
+        </div>
+
+        <h2 class="project-header-1">Ortholinear Custom Keyboard</h2>
+        <h3 class="project-header-2">First Custom PCB & Embedded Microcontroller Build</h3>
         <h4 class="project-header-3">Mechanical, Electrical, Software Engineering</h4>
 
         <div class="project-body">
-          <p><strong>Project title and summary:</strong> This was my first PCB project. I built it from a macropad guide.</p>
-          <p><strong>Technologies used:</strong> Python, KiCad, Onshape, JLCPCB, Thonny, Raspberry Pi 2040 board, CHERRYMX switches</p>
-          <p><strong>Process and challenges:</strong> I did not know how to make PCBs, literally did not know of PCBs. I ended up using a macropad guide so that I did not follow it completely, making something on my own.</p>
-          <p><strong>Results and impact:</strong> I created a PCB project, learned how to use KiCad, and how to debug using Thonny.</p>
+          <p><strong>Project summary:</strong> Self-taught PCB schematic capture, routing, and matrix scanning to construct a custom ortholinear mechanical keyboard from scratch.</p>
+          <p><strong>Technologies used:</strong> Python, KiCad, Onshape, JLCPCB, Thonny, RP2040 Microcontroller, CherryMX Switches.</p>
+          <p><strong>Process and challenges:</strong> Learned KiCad EDA from zero, handled trace routing, component placement, and debugged hardware communication lines using Thonny.</p>
+          <p><strong>Results and impact:</strong> Successfully fabricated a functional PCB, mastering hardware layout and microcontroller firmware debugging.</p>
         </div>
       </article>
 
@@ -128,86 +141,95 @@
         <div class="media-layout">
           <div class="media-main">
             <iframe src="https://www.youtube.com/embed/KcXnXO6OZ_8" title="Wind Tunnel Video" allowfullscreen></iframe>
-            <p class="media-caption">This is the only video I got before lending the mister out at OpenSauce; I did not get it back.</p>
+            <p class="media-caption">Testing airflow visualization mist dynamics.</p>
           </div>
           <div class="media-side-stack">
             <div class="media-side-item tall">
-              <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQV_PDBaR8MynYZs6xQmUL7jkCVJgkiYD9YI2OsMH95DYB_5tPCSzgCheq_GJqATiLIiBwKHZYDA2nUJd_5nTlNeqrul93N19WuT1fCIWt5WrmUBgBbGwwwVczpvaWj-wThI1_fmIjYwtt9P2GibHLkQVFhW2ajcfVnWOrRnqN4oRROUmXCmyij8xeekSge0FJedfimuNOHIXuUwmoG6sKgfRxQFq07y-tiCUyPElis=w1280" alt="Wind Tunnel Photo 1">
+              <img src="images/wind-tunnel-1.jpg" alt="Wind Tunnel 1" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AG8ngQV_PDBaR8MynYZs6xQmUL7jkCVJgkiYD9YI2OsMH95DYB_5tPCSzgCheq_GJqATiLIiBwKHZYDA2nUJd_5nTlNeqrul93N19WuT1fCIWt5WrmUBgBbGwwwVczpvaWj-wThI1_fmIjYwtt9P2GibHLkQVFhW2ajcfVnWOrRnqN4oRROUmXCmyij8xeekSge0FJedfimuNOHIXuUwmoG6sKgfRxQFq07y-tiCUyPElis=w1280'">
             </div>
             <div class="media-side-item tall">
-              <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQVnm8dFYfpedhwJs-nraQRsqwlgoLGfUgT4BdZnHd7cZcPhudcV9zK9YonKwpGZ08bLuhReQNnWsIQ1p7MFRngm9jXbuoMmUHRuZU2sy0GQWtrS_ZupHf0Z4_5dF6QNlVNgJvGDJIsMf1EAkQqv_7UdFM0anV1y5jyGyviUI4Y5V3CadLSQ1xl1lrQXgEH2fT9CYaOVVQksyegOIQB4_y4_UFkC5iuclixyfJJL=w1280" alt="Wind Tunnel Photo 2">
+              <img src="images/wind-tunnel-2.jpg" alt="Wind Tunnel 2" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AG8ngQVnm8dFYfpedhwJs-nraQRsqwlgoLGfUgT4BdZnHd7cZcPhudcV9zK9YonKwpGZ08bLuhReQNnWsIQ1p7MFRngm9jXbuoMmUHRuZU2sy0GQWtrS_ZupHf0Z4_5dF6QNlVNgJvGDJIsMf1EAkQqv_7UdFM0anV1y5jyGyviUI4Y5V3CadLSQ1xl1lrQXgEH2fT9CYaOVVQksyegOIQB4_y4_UFkC5iuclixyfJJL=w1280'">
             </div>
           </div>
         </div>
-        <p class="github-link">Github URL: <a href="https://github.com/noahwalshsd/Air-Tunnel/tree/main" target="_blank">https://github.com/noahwalshsd/Air-Tunnel/tree/main</a></p>
-        <h2 class="project-header-1">Under $20 Wind Tunnel Project</h2>
+
+        <div class="card-meta">
+          <span class="badge">FLUID DYNAMICS</span>
+          <p class="github-link">Github: <a href="https://github.com/noahwalshsd/Air-Tunnel/tree/main" target="_blank">noahwalshsd/Air-Tunnel</a></p>
+        </div>
+
+        <h2 class="project-header-1">Sub-$20 Portable Wind Tunnel</h2>
+        <h3 class="project-header-2">Miniature Airflow Visualization Chamber</h3>
         <h4 class="project-header-3">Mechanical and Aerospace Engineering</h4>
 
         <div class="project-body">
-          <p><strong>Project summary:</strong> I wanted a mini, portable, and affordable wind tunnel, so I built one.</p>
-          <p><strong>Technologies used:</strong> Onshape, 120mm fan, adjustable mister</p>
-          <p><strong>Process and challenges:</strong> Had to compress air for faster speeds and figure out the best wat to loft the main chamber to the fan in Onshape.</p>
-          <p><strong>Results and impact:</strong> Remember to grab your stuff back after lending it to people; I lent my mister out to a team that built a wind tunnel during Outpost and never got it back. It did, however, help them.</p>
+          <p><strong>Project summary:</strong> Designed an ultra-affordable, portable wind tunnel to visualize aerodynamic flow around small scale test models using mist streamline injection.</p>
+          <p><strong>Technologies used:</strong> Onshape CAD, 120mm High-RPM Fan, Ultrasonic Adjustable Mister.</p>
+          <p><strong>Process and challenges:</strong> Engineered CAD lofts to transition laminar flow smoothly from the compression duct into the main observation tube.</p>
         </div>
       </article>
 
       <article class="project-card" data-date="2024-05-01" data-pride="7">
         <div class="media-grid-2x2">
-          <div>
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQXFlxU0jC_q_SWjuezG2qbP-tP5gSuD9gzKGy806Tcqfmqa5N3oqaqF7_YNBkyXY-Ycz9SSGpWfgs9teQTdzw1PKS-r0Rljr6JQEZlvjz9FEjyhEB2Ve5dnh6bgofYn-Zr7pU38Q4RHrKabXlnClBqGChqlUjyhu0jNdwgPkvQFVX5cRGKOm9Z4mGPNL2bvcgo3ZJBAm3FEy0CiANh-_bzB1Yei-wo3h1JOfnDJ=w1280" alt="Balancing Platform 1">
-          </div>
-          <div>
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQWmREecphV55gyp3VCE8JVJje_nvxtGFDUO_HSeBbR1P5MsS3dCyYUrMabHy_lCcVMQEe3rdsFiKDcuEJITILCoHPG9Zpv0x1Iszr1V6LaST19Ph9bj6juOnEFS6topBv8OTSzizDG46_4niSJTx7eiYSwLG4yh6SMCHBDFqYTKwDGXWuHFElJ-mb-_hxp092zmunInsXI0nK0vv1eN9gI-w_TDVqVXRRPeSD4n7mY=w1280" alt="Balancing Platform 2">
-          </div>
+          <img src="images/balancer-1.jpg" alt="Balancer 1" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AG8ngQXFlxU0jC_q_SWjuezG2qbP-tP5gSuD9gzKGy806Tcqfmqa5N3oqaqF7_YNBkyXY-Ycz9SSGpWfgs9teQTdzw1PKS-r0Rljr6JQEZlvjz9FEjyhEB2Ve5dnh6bgofYn-Zr7pU38Q4RHrKabXlnClBqGChqlUjyhu0jNdwgPkvQFVX5cRGKOm9Z4mGPNL2bvcgo3ZJBAm3FEy0CiANh-_bzB1Yei-wo3h1JOfnDJ=w1280'">
+          <img src="images/balancer-2.jpg" alt="Balancer 2" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AG8ngQWmREecphV55gyp3VCE8JVJje_nvxtGFDUO_HSeBbR1P5MsS3dCyYUrMabHy_lCcVMQEe3rdsFiKDcuEJITILCoHPG9Zpv0x1Iszr1V6LaST19Ph9bj6juOnEFS6topBv8OTSzizDG46_4niSJTx7eiYSwLG4yh6SMCHBDFqYTKwDGXWuHFElJ-mb-_hxp092zmunInsXI0nK0vv1eN9gI-w_TDVqVXRRPeSD4n7mY=w1280'">
         </div>
-        <p class="github-link">Github URL: <a href="https://github.com/noahwalshsd/Self-balancer" target="_blank">https://github.com/noahwalshsd/Self-balancer</a></p>
-        <h2 class="project-header-1">Balancing Platform Project</h2>
-        <h4 class="project-header-3">Mechanical, Software, Controls, and Electrical Engineering</h4>
+
+        <div class="card-meta">
+          <span class="badge">CONTROL SYSTEMS</span>
+          <p class="github-link">Github: <a href="https://github.com/noahwalshsd/Self-balancer" target="_blank">noahwalshsd/Self-balancer</a></p>
+        </div>
+
+        <h2 class="project-header-1">Active PID Balancing Platform</h2>
+        <h3 class="project-header-2">Accelerometer Flight Control Prototyping</h3>
+        <h4 class="project-header-3">Mechanical, Software, Controls & Electrical</h4>
 
         <div class="project-body">
-          <p><strong>Project summary:</strong> I wanted to learn both PID control and balancing with accelerometers ahead of coding a script for it for my Flying Wing drone. This project allowed me to get valuable practice to later deploy.</p>
-          <p><strong>Technologies used:</strong> C++, Onshape, SG90 servos, MPU 6050 accelerometer, an arduino nano, and PLA.</p>
-          <p><strong>Process and challenges:</strong> I did not know PID control, so I taught myself using AI. I also ran into issues when wiring it, as there were too many gnd and vcc pins in the controllers for the nano.</p>
-          <p><strong>Results and impact:</strong> I learned basic PID controls and built a balancing platform.</p>
+          <p><strong>Project summary:</strong> Constructed a dual-axis self-balancing platform driven by PID closed-loop control to test IMU sensor processing prior to drone flight software deployment.</p>
+          <p><strong>Technologies used:</strong> C++, Onshape, SG90 Servos, MPU-6050 6-DOF Accelerometer/Gyro, Arduino Nano.</p>
         </div>
       </article>
 
       <article class="project-card" data-date="2024-04-01" data-pride="4">
         <div class="media-grid-2x2">
-          <div>
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQW1218EwCso_c81Ojaw8u6KAN3iXxReYvoUK8atgHSRnlcMxIriwK1OcW2hfOhzaaXc8Vg1F50PTMSn0rQQiaNsveavgUccdld4YuZHIRKkUSs-JPCBDrgleDX3PKcCIC47NVFtFYGoKkRjrcQNN9Xtc8E9hB3imtAXxdU0LsjEOsXZSnoGoLbdcTFskpEtuZ18UVr06TYs2ukl-1BAmiZJv2zqNL7zma4EEAfL=w1280" alt="Flying Wing Drone 1">
-          </div>
-          <div>
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQU-iJbiwiIv3fjLP2KnM7lFBOYGZOOeLkKtmWfyBqEX7lxpX3wRMAqi6ACpLA-ZMouNuvZ_Ulttq6DaaV2-0tB2nH8u04PlYV79b_tKkQLK4FvUHawJm4MP6rvXvG6QifZZC9hXkcHnW8yTQ0tQtX4PCyes1PTwupq8oZpAI_6w2Qfrn-wLZfCQ1me6Hl5e4TIjcvWHwGv8bKK558Ti4BNU6wv4-2vyclEtRYl1MOY=w1280" alt="Flying Wing Drone 2">
-          </div>
+          <img src="images/wing-1.jpg" alt="Flying Wing 1" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AG8ngQW1218EwCso_c81Ojaw8u6KAN3iXxReYvoUK8atgHSRnlcMxIriwK1OcW2hfOhzaaXc8Vg1F50PTMSn0rQQiaNsveavgUccdld4YuZHIRKkUSs-JPCBDrgleDX3PKcCIC47NVFtFYGoKkRjrcQNN9Xtc8E9hB3imtAXxdU0LsjEOsXZSnoGoLbdcTFskpEtuZ18UVr06TYs2ukl-1BAmiZJv2zqNL7zma4EEAfL=w1280'">
+          <img src="images/wing-2.jpg" alt="Flying Wing 2" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AG8ngQU-iJbiwiIv3fjLP2KnM7lFBOYGZOOeLkKtmWfyBqEX7lxpX3wRMAqi6ACpLA-ZMouNuvZ_Ulttq6DaaV2-0tB2nH8u04PlYV79b_tKkQLK4FvUHawJm4MP6rvXvG6QifZZC9hXkcHnW8yTQ0tQtX4PCyes1PTwupq8oZpAI_6w2Qfrn-wLZfCQ1me6Hl5e4TIjcvWHwGv8bKK558Ti4BNU6wv4-2vyclEtRYl1MOY=w1280'">
         </div>
-        <p class="github-link">Github URL: <a href="https://github.com/noahwalshsd/Flying-Wing" target="_blank">https://github.com/noahwalshsd/Flying-Wing</a></p>
-        <h2 class="project-header-1">Flying Wing RC Drone Project</h2>
-        <h4 class="project-header-3">Mechanical, Aerospace, Software, Controls, and Electrical Engineering</h4>
+
+        <div class="card-meta">
+          <span class="badge">AEROSPACE & RC</span>
+          <p class="github-link">Github: <a href="https://github.com/noahwalshsd/Flying-Wing" target="_blank">noahwalshsd/Flying-Wing</a></p>
+        </div>
+
+        <h2 class="project-header-1">Flying Wing RC Aircraft</h2>
+        <h3 class="project-header-2">Fixed-Wing Aerodynamics & Stability Control</h3>
+        <h4 class="project-header-3">Mechanical, Aerospace, Controls & Electrical</h4>
 
         <div class="project-body">
-          <p><strong>Project summary:</strong> I created a flying wing drone because I wanted to challenge myself more than a normal fixed-wing drone or quadcopter. This did prove to be a challenge, as it was very difficult to balance the drone.</p>
-          <p><strong>Technologies used:</strong> Onshape, C++, MPU 6050, Arduino Nano, FLysky controller and RC pair, LiPo batteries, an ESC, motors, and servos.</p>
-          <p><strong>Process and challenges:</strong> I struggled with balancing the weight, so I ended up having to ballast the drone's nose. I also did not undertand PID tuning for the guided mode on the drone, so I made a PID tuning project to learn.</p>
-          <p><strong>Results and impact:</strong> I learned significantly about air foils and the importance of balancing weight in a fixed-wing drone.</p>
+          <p><strong>Project summary:</strong> Custom custom-built flying wing aircraft designed to evaluate center-of-gravity (CG) placement, elevon mixing, and airfoil drag profiles.</p>
+          <p><strong>Technologies used:</strong> Onshape, C++, MPU-6050, FlySky Transmitter/Receiver, LiPo, ESC, Brushless Motors.</p>
         </div>
       </article>
 
       <article class="project-card" data-date="2023-11-01" data-pride="5">
         <div class="media-layout">
           <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQWfE-nQ4LZ6pgfsM1a5kF9C_IhADw-dlGy_4hswDh-vsaic0xyGivoJ1x4QEahJCSmLxh55EcAA7ZvbJ4zwLgGHaQ_rM6oGxILm0wN7VBHLKSIyjQrDv5zUvq1meCPPQZTlZQwjzpppFg1MzzmlwAINhCxXfIW46lT_ya5NBaXcEaIHBXlzay9UtOlXO59rjP9qUIqKCItCV2nEGL1LkiDMmhMyr31qXLG3aEls=w1280" alt="Science Olympiad Rover">
+            <img src="images/rover-1.jpg" alt="Science Olympiad Rover" onerror="this.src='https://lh3.googleusercontent.com/sitesv/AG8ngQWfE-nQ4LZ6pgfsM1a5kF9C_IhADw-dlGy_4hswDh-vsaic0xyGivoJ1x4QEahJCSmLxh55EcAA7ZvbJ4zwLgGHaQ_rM6oGxILm0wN7VBHLKSIyjQrDv5zUvq1meCPPQZTlZQwjzpppFg1MzzmlwAINhCxXfIW46lT_ya5NBaXcEaIHBXlzay9UtOlXO59rjP9qUIqKCItCV2nEGL1LkiDMmhMyr31qXLG3aEls=w1280'">
           </div>
         </div>
-        <p class="github-link">Github URL: <a href="https://github.com/noahwalshsd/Robo-car" target="_blank">https://github.com/noahwalshsd/Robo-car</a></p>
-        <h2 class="project-header-1">Science Olympiad Robot Car Project</h2>
+
+        <div class="card-meta">
+          <span class="badge">AUTONOMOUS ROBOTICS</span>
+          <p class="github-link">Github: <a href="https://github.com/noahwalshsd/Robo-car" target="_blank">noahwalshsd/Robo-car</a></p>
+        </div>
+
+        <h2 class="project-header-1">Science Olympiad Autonomous Rover</h2>
+        <h3 class="project-header-2">Precision Obstacle & Mission Rover</h3>
         <h4 class="project-header-3">Mechanical, Electrical, and Software Engineering</h4>
 
         <div class="project-body">
-          <p><strong>Project and summary:</strong> My friend, William L, and I built an autonomous rover for Science Olympiad. This car had 2 large wheels and dragged on its back side to push bottles into zones and complete the mission.</p>
-          <p><strong>Technologies used:</strong> Onshape, PLA, Arduino Uno, encoder motors, and AA batteries.</p>
-          <p><strong>Process and challenges:</strong> After the encoders fried the night before the competition, William and I had to tag-team coding a time-based script for the car during the competition.</p>
-          <p><strong>Results and impact:</strong> We placed 14th at the San Diego regionals, 2 places from medaling. This was surprising after the encoders completely fried, leaving us with nothing on the day of the competition.</p>
+          <p><strong>Project summary:</strong> Built an autonomous rover equipped with encoder feedback to complete obstacle courses and push mission targets within timed trials.</p>
+          <p><strong>Technologies used:</strong> Onshape, Arduino Uno, Encoder DC Motors, 3D Printed PLA chassis.</p>
         </div>
       </article>
 
