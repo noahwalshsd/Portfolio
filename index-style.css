@@ -139,7 +139,7 @@ body {
   border-color: var(--card-hover-border);
 }
 
-/* Bio Showcase Card - Explicit height pairing for profile photo */
+/* Showcase Top Bio Card */
 .showcase-card {
   display: grid;
   grid-template-columns: 320px 1fr;
@@ -154,9 +154,10 @@ body {
   gap: 1.5rem;
 }
 
+/* Work Experience Cards */
 .work-card {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: 240px 1fr; /* Equal width column for all logos */
   gap: 2.5rem;
   padding: 2rem;
   align-items: center;
@@ -169,31 +170,37 @@ body {
   }
 }
 
-/* --- MEDIA STYLING --- */
+/* --- MEDIA & LOGO CONTAINER STYLING --- */
 .card-media {
   width: 100%;
-  height: 100%;
+  height: 120px; /* Fixed height for equal proportions */
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  border-radius: 12px; /* Smooth rounded corners on container */
+  overflow: hidden; /* Clips any image edges or white backgrounds */
 }
 
-/* ARC Profile Photo: Absolute full fill, rounded 12px corners, no boxes */
+/* Bio Photo Specific (Stretches Full Height) */
+.showcase-card .card-media {
+  height: 100%;
+  min-height: 280px;
+}
+
 .profile-photo-uncut {
   width: 100%;
   height: 100%;
-  min-height: 320px;
   object-fit: cover;
   border-radius: 12px;
   display: block;
 }
 
-/* Corporate Logos: Uncut, centered, transparent background */
+/* Logotype Images (Equal Width & Proportionally Centered) */
 .logo-uncut {
   width: 100%;
-  max-height: 120px;
-  object-fit: contain;
-  border-radius: 8px;
+  height: 100%;
+  object-fit: contain; /* Proportional scaling without distortion */
+  border-radius: 12px;
   display: block;
 }
 
