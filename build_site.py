@@ -329,6 +329,7 @@ def build_projects_html(df_projects, author_name="Noah Walsh"):
       </select>
     </div>
 
+
     <div id="projects-container" class="projects-grid">
 {project_cards_html.rstrip()}
     </div>
