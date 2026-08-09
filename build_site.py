@@ -2,6 +2,7 @@ import pandas as pd
 import datetime
 import re
 import os
+import urllib.parse
 
 # Excel File Name
 EXCEL_FILE = 'Portfolio main.xlsx'
@@ -21,22 +22,22 @@ def clean_val(val, default=""):
 
 
 def format_text_block(text):
-    """Formats project text blocks, bolding key sections automatically."""
+    """Formats project text blocks, bolding key sections and spacing them perfectly."""
     if not isinstance(text, str) or not text.strip():
         return ""
     
-    paragraphs = [p.strip() for p in text.strip().split('\n\n') if p.strip()]
+    # Split by any newline character to handle Excel's formatting quirks
+    lines = [line.strip() for line in text.strip().split('\n') if line.strip()]
     formatted_paragraphs = []
 
-    for p in paragraphs:
-        # Regex handles variation in spacing/colons
+    for p in lines:
+        # Force bolding on standard portfolio headers
         p_html = re.sub(
             r'^(Project summary:|Technologies used:|Process and challenges:|Results and impact:|Project title and summary:|Projectand summary:)', 
             r'<strong>\1</strong>', 
             p,
             flags=re.IGNORECASE
         )
-        p_html = p_html.replace('\n', '<br>')
         formatted_paragraphs.append(f"          <p>{p_html}</p>")
 
     return "\n".join(formatted_paragraphs)
@@ -94,6 +95,8 @@ def get_media_element(url, caption=""):
     
     # Handle Images
     else:
+        # Encode spaces in image names (e.g. "ARC 1.jpg" -> "ARC%201.jpg") to prevent broken HTML links
+        url = url.replace(' ', '%20')
         return {
             "type": "image",
             "html": f"""<div class="media-main">
@@ -114,7 +117,7 @@ def render_project_media_layout(media_items):
 {media_items[0]['html']}
         </div>\n"""
     
-    # Grid items
+    # Grid items (2 to 4 items format beautifully in this grid)
     combined_media = "\n".join([item['html'] for item in media_items])
     return f"""        <div class="media-grid-2x2">
 {combined_media}
@@ -128,7 +131,7 @@ def build_index_html(df_bio, df_main):
     bio_row = df_bio.iloc[0] if not df_bio.empty else {}
     name = clean_val(bio_row.get('Name'), 'Noah Walsh')
     age = clean_val(bio_row.get('Age'), '17')
-    img_addr = clean_val(bio_row.get('img1 address'), 'images/me.png')
+    img_addr = clean_val(bio_row.get('img1 address'), 'images/me.png').replace(' ', '%20')
     img_caption = clean_val(bio_row.get('img1 caption'))
     education = clean_val(bio_row.get('Education'), 'Senior at Scripps Ranch High School')
     w_gpa = clean_val(bio_row.get('W_GPA'), '4.48')
@@ -188,7 +191,7 @@ def build_index_html(df_bio, df_main):
             
         category = clean_val(row.get('Category'), 'EXPERIENCE').upper()
         role = clean_val(row.get('Role'))
-        logo_addr = clean_val(row.get('Img1 address'))
+        logo_addr = clean_val(row.get('Img1 address')).replace(' ', '%20')
         text_body = format_work_text(clean_val(row.get('Text')))
 
         card = f"""      <article class="card work-card">
