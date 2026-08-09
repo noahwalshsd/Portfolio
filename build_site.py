@@ -7,7 +7,7 @@ import os
 EXCEL_FILE = 'Portfolio main.xlsx'
 
 # BUMP THIS NUMBER (e.g. "2", "3", "4") TO FORCE GITHUB PAGES TO REFRESH THE CSS/JS CACHE
-VERSION = "18"
+VERSION = "1120"
 
 
 def clean_val(val, default=""):
