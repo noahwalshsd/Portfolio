@@ -2,10 +2,12 @@ import pandas as pd
 import datetime
 import re
 import os
-import urllib.parse
 
 # Excel File Name
 EXCEL_FILE = 'Portfolio main.xlsx'
+
+# BUMP THIS NUMBER (e.g. "2", "3", "4") TO FORCE GITHUB PAGES TO REFRESH THE CSS/JS CACHE
+VERSION = "2"
 
 
 def clean_val(val, default=""):
@@ -26,12 +28,10 @@ def format_text_block(text):
     if not isinstance(text, str) or not text.strip():
         return ""
     
-    # Split by any newline character to handle Excel's formatting quirks
     lines = [line.strip() for line in text.strip().split('\n') if line.strip()]
     formatted_paragraphs = []
 
     for p in lines:
-        # Force bolding on standard portfolio headers
         p_html = re.sub(
             r'^(Project summary:|Technologies used:|Process and challenges:|Results and impact:|Project title and summary:|Projectand summary:)', 
             r'<strong>\1</strong>', 
@@ -95,7 +95,6 @@ def get_media_element(url, caption=""):
     
     # Handle Images
     else:
-        # Encode spaces in image names (e.g. "ARC 1.jpg" -> "ARC%201.jpg") to prevent broken HTML links
         url = url.replace(' ', '%20')
         return {
             "type": "image",
@@ -111,13 +110,11 @@ def render_project_media_layout(media_items):
     if not media_items:
         return ""
     
-    # Single item
     if len(media_items) == 1:
         return f"""        <div class="media-layout single">
 {media_items[0]['html']}
         </div>\n"""
     
-    # Grid items (2 to 4 items format beautifully in this grid)
     combined_media = "\n".join([item['html'] for item in media_items])
     return f"""        <div class="media-grid-2x2">
 {combined_media}
@@ -127,7 +124,6 @@ def render_project_media_layout(media_items):
 def build_index_html(df_bio, df_main):
     """Generates index.html using 'bio' and 'main' tabs."""
     
-    # --- BIO SECTION ---
     bio_row = df_bio.iloc[0] if not df_bio.empty else {}
     name = clean_val(bio_row.get('Name'), 'Noah Walsh')
     age = clean_val(bio_row.get('Age'), '17')
@@ -177,7 +173,6 @@ def build_index_html(df_bio, df_main):
       </div>
     </section>"""
 
-    # --- WORK & LEADERSHIP SECTION ---
     work_cards_html = ""
     
     if 'Order' in df_main.columns:
@@ -219,7 +214,7 @@ def build_index_html(df_bio, df_main):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v={VERSION}">
 </head>
 <body>
 
@@ -289,7 +284,6 @@ def build_projects_html(df_projects, author_name="Noah Walsh"):
         disciplines = clean_val(row.get('Disciplines'))
         main_text = clean_val(row.get('Main Text'))
 
-        # Media items
         media_items = []
         for i in range(1, 5):
             addr_col = f'Vid or photo address {i}'
@@ -300,7 +294,6 @@ def build_projects_html(df_projects, author_name="Noah Walsh"):
 
         media_layout_html = render_project_media_layout(media_items)
 
-        # Header structure
         sub_header = f'        <h3 class="project-header-2"><em>{subtitle}</em></h3>\n' if subtitle else ''
         github_markup = f'        <p class="github-link">Github: <a href="{github_url}" target="_blank">{github_url}</a></p>\n' if github_url else ''
         formatted_body = format_text_block(main_text)
@@ -326,7 +319,7 @@ def build_projects_html(df_projects, author_name="Noah Walsh"):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v={VERSION}">
 </head>
 <body>
 
@@ -362,7 +355,7 @@ def build_projects_html(df_projects, author_name="Noah Walsh"):
     <p>© 2026 {author_name}.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v={VERSION}"></script>
 </body>
 </html>"""
 
