@@ -1,27 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
   const sortSelect = document.getElementById('sort-select');
-  const container = document.getElementById('projects-container');
+  const projectsContainer = document.getElementById('projects-container');
 
-  if (!sortSelect || !container) return;
+  if (!sortSelect || !projectsContainer) return;
 
-  sortSelect.addEventListener('change', () => {
-    const sortBy = sortSelect.value;
-    const cards = Array.from(container.querySelectorAll('.project-card'));
+  function sortProjects() {
+    const value = sortSelect.value;
+    const cards = Array.from(projectsContainer.querySelectorAll('.project-card'));
 
     cards.sort((a, b) => {
-      if (sortBy === 'date') {
-        // Sort by Date (newest to oldest)
-        return new Date(b.dataset.date) - new Date(a.dataset.date);
-      } else if (sortBy === 'pride') {
-        // Sort by Pride Rank (lowest number = highest rank)
-        return Number(a.dataset.pride) - Number(b.dataset.pride);
+      if (value === 'pride') {
+        const prideA = parseInt(a.getAttribute('data-pride') || '99', 10);
+        const prideB = parseInt(b.getAttribute('data-pride') || '99', 10);
+        return prideA - prideB;
+      } else if (value === 'date') {
+        const dateA = new Date(a.getAttribute('data-date') || '1970-01-01');
+        const dateB = new Date(b.getAttribute('data-date') || '1970-01-01');
+        return dateB - dateA;
       }
+      return 0;
     });
 
-    // Re-append sorted cards back into container
-    cards.forEach(card => container.appendChild(card));
-  });
+    cards.forEach(card => projectsContainer.appendChild(card));
+  }
 
-  // Run initial sort on page load
-  sortSelect.dispatchEvent(new Event('change'));
+  sortSelect.addEventListener('change', sortProjects);
+  sortProjects();
 });

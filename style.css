@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PORSCHE / KOENIGSEGG THEME FOR PROJECTS.HTML
+   UNIFIED PORSCHE / KOENIGSEGG INSPIRED THEME
    ========================================================================== */
 
 :root {
@@ -32,7 +32,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* --- NAVIGATION (Matches Index) --- */
+/* --- NAVIGATION --- */
 .navbar {
   position: fixed;
   top: 0;
@@ -41,7 +41,7 @@ body {
   background-color: rgba(8, 8, 10, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--card-border); /* Removed the ugly full-width red line */
+  border-bottom: 1px solid var(--card-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -78,7 +78,6 @@ body {
   color: var(--text-main);
 }
 
-/* The ONLY red line should be here */
 .nav-links a.active {
   border-bottom: 2px solid var(--accent-red);
   padding-bottom: 4px;
@@ -107,19 +106,32 @@ body {
   color: var(--text-main);
 }
 
-/* --- CONTAINER & CONTROLS --- */
+.section-divider {
+  margin: 4rem 0 2rem 0;
+  border-top: 1px solid var(--card-border);
+  padding-top: 2rem;
+}
+
+.section-divider h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  color: var(--text-main);
+}
+
+/* --- MAIN CONTAINER --- */
 .container {
   max-width: 1200px;
   margin: 0 auto 4rem auto;
   padding: 0 2rem;
 }
 
+/* --- CONTROLS --- */
 .controls {
   margin-bottom: 2.5rem;
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: var(--font-body);
 }
 
 .controls label {
@@ -146,7 +158,41 @@ body {
   border-color: var(--card-hover-border);
 }
 
-/* --- PROJECT CARDS --- */
+/* --- CARDS & PANELS --- */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--card-hover-border);
+}
+
+.showcase-card {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2.5rem;
+  padding: 2rem;
+  align-items: center;
+}
+
+.experience-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.work-card {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2.5rem;
+  padding: 2rem;
+  align-items: center;
+}
+
 .projects-grid {
   display: flex;
   flex-direction: column;
@@ -154,162 +200,237 @@ body {
 }
 
 .project-card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--card-border); /* Removed bottom red border */
-  border-radius: 12px;
   padding: 2.5rem;
   width: 100%;
-  transition: border-color 0.3s ease;
-}
-
-.project-card:hover {
-  border-color: var(--card-hover-border);
-}
-
-/* --- MEDIA & IMAGES (Clean & Rounded) --- */
-.media-layout {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
 }
 
 @media (max-width: 850px) {
-  .media-layout {
+  .showcase-card,
+  .work-card {
     grid-template-columns: 1fr;
   }
+}
+
+/* --- MEDIA LAYOUTS & IMAGES --- */
+.card-media {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-photo-uncut {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.logo-uncut {
+  width: 100%;
+  height: 120px;
+  border-radius: 12px;
+  display: block;
+  box-sizing: border-box;
+}
+
+/* Specific Work Logo Adjustments */
+.work-card img[alt*="Science"],
+.work-card img[src*="SEAP"] {
+  object-fit: cover;
+  background-color: transparent;
+}
+
+.work-card img[alt*="Aerospace"],
+.work-card img[src*="ARC"] {
+  object-fit: contain;
+  background-color: #ffffff;
+  padding: 0.8rem;
+}
+
+.work-card img[alt*="Hack Club"],
+.work-card img[src*="HC"] {
+  object-fit: contain;
+  background-color: #ffffff;
+  padding: 0.8rem;
+}
+
+.media-layout.single {
+  margin-bottom: 1.5rem;
+}
+
+.media-grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .media-main iframe,
 .media-main img {
   width: 100%;
-  height: 380px;
+  height: 320px;
   object-fit: cover;
-  border-radius: 12px; /* Smooth corners */
-  border: none; /* No ugly boxes */
-}
-
-.media-side-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.media-side-item {
   border-radius: 12px;
-  overflow: hidden;
-}
-
-.media-side-item.tall {
-  height: 180px;
-}
-
-.media-side-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.media-grid-2x2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.media-grid-2x2 img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 12px; /* Smooth corners */
   border: none;
-}
-
-@media (max-width: 600px) {
-  .media-grid-2x2 {
-    grid-template-columns: 1fr;
-  }
+  background-color: #0d0d11;
 }
 
 .media-caption {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
-  margin-top: 0.8rem;
+  margin-top: 0.6rem;
   text-align: center;
 }
 
-/* --- META & BADGES --- */
-.card-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--card-border);
-}
-
+/* --- TYPOGRAPHY & RED BADGES --- */
 .badge {
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 1.5px;
-  color: var(--text-muted);
+  color: var(--accent-red); /* PORSCHE RED ACCENT */
   text-transform: uppercase;
+  margin-bottom: 0.5rem;
 }
 
-/* --- SLEEK LINKS --- */
-.github-link {
+.card-heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.4rem;
+}
+
+.role-title {
+  font-size: 0.95rem;
+  color: var(--accent-silver);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.card-text {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
 }
 
-.github-link a {
-  color: var(--text-main); /* Silver link */
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Subtle underline */
-  padding-bottom: 2px;
-  transition: color 0.2s ease, border-color 0.2s ease;
+.card-text p {
+  margin-bottom: 0.8rem;
 }
 
-.github-link a:hover {
-  color: var(--accent-red); /* Porsche Red on hover */
-  border-color: var(--accent-red);
-}
-
-/* --- TYPOGRAPHY --- */
 .project-header-1 {
   font-size: 1.8rem;
-  text-align: center;
-  margin-bottom: 0.5rem;
+  text-align: left;
+  margin-bottom: 0.3rem;
   font-weight: 700;
   color: var(--text-main);
 }
 
 .project-header-2 {
-  font-size: 1.4rem;
-  text-align: center;
+  font-size: 1.3rem;
+  text-align: left;
   font-style: italic;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   font-weight: 400;
   color: var(--accent-silver);
 }
 
 .project-header-3 {
-  font-size: 1.1rem;
-  text-align: center;
-  margin-bottom: 2rem;
+  font-size: 1rem;
+  text-align: left;
+  margin-bottom: 1rem;
   font-weight: 600;
   color: var(--text-muted);
 }
 
 .project-body p {
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-size: 0.95rem;
+  line-height: 1.65;
   text-align: left;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   color: var(--text-muted);
 }
 
 .project-body strong {
   color: var(--text-main);
+}
+
+/* --- LINKS --- */
+.github-link {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+}
+
+.github-link a {
+  color: var(--text-main);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.github-link a:hover {
+  color: var(--accent-red);
+  border-color: var(--accent-red);
+}
+
+/* --- STATS & LISTS --- */
+.bio-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.stat-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-top: 2px;
+}
+
+.bullet-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.bullet-list li {
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.bullet-list li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--accent-red);
+  font-weight: bold;
+}
+
+/* --- FOOTER --- */
+.site-footer {
+  text-align: center;
+  padding: 3rem 1rem;
+  border-top: 1px solid var(--card-border);
+  color: var(--text-muted);
+  font-size: 0.8rem;
 }

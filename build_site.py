@@ -6,12 +6,18 @@ import os
 # Excel File Name
 EXCEL_FILE = 'Portfolio main.xlsx'
 
+
 def clean_val(val, default=""):
-    """Safely cleans and stringifies dataframe values."""
+    """Safely cleans and stringifies dataframe values and fixes paths."""
     if pd.isna(val) or val is None:
         return default
     val_str = str(val).strip()
-    return "" if val_str.lower() == 'nan' else val_str
+    if val_str.lower() == 'nan':
+        return default
+    
+    # Strip unnecessary GitHub repository prefixes from local image paths
+    val_str = re.sub(r'^(?:noahwalshsd/Portfolio/)+', '', val_str)
+    return val_str
 
 
 def format_text_block(text):
@@ -23,10 +29,12 @@ def format_text_block(text):
     formatted_paragraphs = []
 
     for p in paragraphs:
+        # Regex handles variation in spacing/colons
         p_html = re.sub(
             r'^(Project summary:|Technologies used:|Process and challenges:|Results and impact:|Project title and summary:|Projectand summary:)', 
             r'<strong>\1</strong>', 
-            p
+            p,
+            flags=re.IGNORECASE
         )
         p_html = p_html.replace('\n', '<br>')
         formatted_paragraphs.append(f"          <p>{p_html}</p>")
@@ -40,8 +48,6 @@ def format_work_text(text):
         return ""
     
     lines = [line.strip() for line in text.strip().split('\n') if line.strip()]
-    
-    # If lines start with dash or look like bullet items
     has_bullets = any(line.startswith('-') or line.startswith('•') for line in lines)
     
     if has_bullets:
@@ -59,12 +65,12 @@ def format_work_text(text):
 
 
 def get_media_element(url, caption=""):
-    """Determines whether a link is a YouTube video or an Image and returns HTML."""
+    """Determines whether a link is a YouTube video or an Image and returns HTML dict."""
     url = clean_val(url)
     caption = clean_val(caption)
     
     if not url:
-        return ""
+        return None
 
     caption_html = f'<p class="media-caption">{caption}</p>' if caption else ''
 
@@ -78,19 +84,41 @@ def get_media_element(url, caption=""):
         
         embed_url = f"https://www.youtube.com/embed/{video_id}" if video_id else url
 
-        return f"""
-          <div class="media-main">
+        return {
+            "type": "video",
+            "html": f"""<div class="media-main">
             <iframe src="{embed_url}" title="Project Video" allowfullscreen></iframe>
             {caption_html}
           </div>"""
+        }
     
     # Handle Images
     else:
-        return f"""
-          <div class="media-main">
+        return {
+            "type": "image",
+            "html": f"""<div class="media-main">
             <img src="{url}" alt="Project Media">
             {caption_html}
           </div>"""
+        }
+
+
+def render_project_media_layout(media_items):
+    """Renders clean responsive grid layouts for media items."""
+    if not media_items:
+        return ""
+    
+    # Single item
+    if len(media_items) == 1:
+        return f"""        <div class="media-layout single">
+{media_items[0]['html']}
+        </div>\n"""
+    
+    # Grid items
+    combined_media = "\n".join([item['html'] for item in media_items])
+    return f"""        <div class="media-grid-2x2">
+{combined_media}
+        </div>\n"""
 
 
 def build_index_html(df_bio, df_main):
@@ -100,14 +128,14 @@ def build_index_html(df_bio, df_main):
     bio_row = df_bio.iloc[0] if not df_bio.empty else {}
     name = clean_val(bio_row.get('Name'), 'Noah Walsh')
     age = clean_val(bio_row.get('Age'), '17')
-    img_addr = clean_val(bio_row.get('img1 address'))
+    img_addr = clean_val(bio_row.get('img1 address'), 'images/me.png')
     img_caption = clean_val(bio_row.get('img1 caption'))
     education = clean_val(bio_row.get('Education'), 'Senior at Scripps Ranch High School')
     w_gpa = clean_val(bio_row.get('W_GPA'), '4.48')
     uw_gpa = clean_val(bio_row.get('UW_GPA'), '3.95')
     focus = clean_val(bio_row.get('Focus'), 'Mechanical Engineering')
     linkedin = clean_val(bio_row.get('Linkedin'), '#')
-    bio_text = clean_val(bio_row.get('Text'), '')
+    bio_text = clean_val(bio_row.get('Text'), 'High school senior with a passion for robotics, embedded systems, and rapid prototyping.')
 
     bio_caption_html = f'<p class="media-caption">{img_caption}</p>' if img_caption else ''
     
@@ -149,7 +177,6 @@ def build_index_html(df_bio, df_main):
     # --- WORK & LEADERSHIP SECTION ---
     work_cards_html = ""
     
-    # Sort by Order column if present
     if 'Order' in df_main.columns:
         df_main['Order'] = pd.to_numeric(df_main['Order'], errors='coerce').fillna(99)
         df_main = df_main.sort_values('Order')
@@ -189,7 +216,7 @@ def build_index_html(df_bio, df_main):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="index-style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -238,7 +265,6 @@ def build_projects_html(df_projects, author_name="Noah Walsh"):
     """Generates projects.html from the 'projects' tab."""
     project_cards_html = ""
 
-    # Sort by Pride Rank or Rank
     if 'Pride Rank (1 = Highest)' in df_projects.columns:
         df_projects['Pride Rank (1 = Highest)'] = pd.to_numeric(df_projects['Pride Rank (1 = Highest)'], errors='coerce').fillna(99)
 
@@ -261,20 +287,15 @@ def build_projects_html(df_projects, author_name="Noah Walsh"):
         main_text = clean_val(row.get('Main Text'))
 
         # Media items
-        media_html_items = []
+        media_items = []
         for i in range(1, 5):
             addr_col = f'Vid or photo address {i}'
             cap_col = f'Vid or photo caption {i}'
-            media_item = get_media_element(row.get(addr_col, ''), row.get(cap_col, ''))
-            if media_item:
-                media_html_items.append(media_item)
+            item = get_media_element(row.get(addr_col, ''), row.get(cap_col, ''))
+            if item:
+                media_items.append(item)
 
-        media_layout_html = ""
-        if media_html_items:
-            combined_media = "\n".join(media_html_items)
-            media_layout_html = f"""        <div class="media-layout">
-{combined_media}
-        </div>\n"""
+        media_layout_html = render_project_media_layout(media_items)
 
         # Header structure
         sub_header = f'        <h3 class="project-header-2"><em>{subtitle}</em></h3>\n' if subtitle else ''
@@ -302,7 +323,7 @@ def build_projects_html(df_projects, author_name="Noah Walsh"):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="index-style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -321,14 +342,13 @@ def build_projects_html(df_projects, author_name="Noah Walsh"):
 
   <main class="container">
 
-    <div class="controls" style="margin-bottom: 2rem;">
-      <label for="sort-select" style="color: var(--text-muted); font-size: 0.9rem;">Sort projects by: </label>
-      <select id="sort-select" style="background: var(--card-bg); color: var(--text-main); border: 1px solid var(--card-border); padding: 0.4rem 0.8rem; border-radius: 6px;">
+    <div class="controls">
+      <label for="sort-select">Sort projects by: </label>
+      <select id="sort-select">
         <option value="pride">Pride Level (Highest First)</option>
         <option value="date">Creation Date (Newest First)</option>
       </select>
     </div>
-
 
     <div id="projects-container" class="projects-grid">
 {project_cards_html.rstrip()}
@@ -349,7 +369,6 @@ def build_projects_html(df_projects, author_name="Noah Walsh"):
 
 
 def main():
-    # Attempt to locate Excel file regardless of exact casing
     target_file = EXCEL_FILE
     if not os.path.exists(target_file):
         for f in os.listdir('.'):
@@ -364,7 +383,6 @@ def main():
         df_main = pd.DataFrame()
         df_projects = pd.DataFrame()
 
-        # Match sheets by name (case-insensitive)
         for sheet_name in xls.sheet_names:
             s_clean = sheet_name.strip().lower()
             temp_df = pd.read_excel(xls, sheet_name=sheet_name)
