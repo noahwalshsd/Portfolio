@@ -1,8 +1,8 @@
-import pandas as pd
-import datetime
-import re
 import os
+import re
+import datetime
 import urllib.parse
+import pandas as pd
 
 # Excel File Name
 EXCEL_FILE = 'Portfolio main.xlsx'
@@ -41,7 +41,7 @@ def format_text_block(text):
         p_html = re.sub(
             r'^(Project summary:|Technologies used:|Process and challenges:|Results and impact:|Project title and summary:|Projectand summary:)', 
             r'<strong>\1</strong>', 
-            p,
+            p, 
             flags=re.IGNORECASE
         )
         formatted_paragraphs.append(f"          <p>{p_html}</p>")
@@ -63,9 +63,7 @@ def format_work_text(text):
             cleaned_line = re.sub(r'^[-•]\s*', '', line)
             bullet_items.append(f"              <li>{cleaned_line}</li>")
         bullets_html = "\n".join(bullet_items)
-        return f"""<ul class="bullet-list">
-{bullets_html}
-            </ul>"""
+        return f'<ul class="bullet-list">\n{bullets_html}\n            </ul>'
     else:
         p_items = [f"<p>{line}</p>" for line in lines]
         return "\n            ".join(p_items)
@@ -130,7 +128,7 @@ def render_project_media_layout(media_items):
 
 
 def build_index_html(df_bio, df_main):
-    """Generates index.html using 'bio' and 'main' tabs."""
+    """Generates index.html dynamically using 'bio' and 'main' or 'work' tabs."""
     bio_row = df_bio.iloc[0] if not df_bio.empty else {}
     name = clean_val(bio_row.get('Name'), 'Noah Walsh')
     age = clean_val(bio_row.get('Age'), '17')
@@ -196,6 +194,8 @@ def build_index_html(df_bio, df_main):
         logo_addr = encode_url_path(clean_val(row.get('Img1 address')))
         text_body = format_work_text(clean_val(row.get('Text')))
 
+        role_markup = f'<p class="role-title">{role}</p>\n' if role else ''
+
         card = f"""      <article class="card work-card">
         <div class="card-media">
           <img src="{logo_addr}" alt="{title}" class="logo-uncut">
@@ -203,8 +203,7 @@ def build_index_html(df_bio, df_main):
         <div class="card-content">
           <span class="badge">{category}</span>
           <h3 class="card-heading">{title}</h3>
-          <p class="role-title">{role}</p>
-          <div class="card-text">
+          {role_markup}          <div class="card-text">
             {text_body}
           </div>
         </div>
