@@ -21,17 +21,23 @@ def clean_val(val, default=""):
     return val_str
 
 
+def encode_url_path(path):
+    """Encodes spaces and special characters in local relative image paths."""
+    if not path or path.startswith(('http://', 'https://')):
+        return path
+    # Quote path while preserving forward slashes
+    return urllib.parse.quote(path, safe='/')
+
+
 def format_text_block(text):
     """Formats project text blocks, bolding key sections and spacing them perfectly."""
     if not isinstance(text, str) or not text.strip():
         return ""
     
-    # Split by any newline character to handle Excel's formatting quirks
     lines = [line.strip() for line in text.strip().split('\n') if line.strip()]
     formatted_paragraphs = []
 
     for p in lines:
-        # Force bolding on standard portfolio headers
         p_html = re.sub(
             r'^(Project summary:|Technologies used:|Process and challenges:|Results and impact:|Project title and summary:|Projectand summary:)', 
             r'<strong>\1</strong>', 
@@ -65,6 +71,13 @@ def format_work_text(text):
         return "\n            ".join(p_items)
 
 
+def extract_youtube_id(url):
+    """Extracts YouTube video ID from various YouTube URL formats."""
+    pattern = r'(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})'
+    match = re.search(pattern, url)
+    return match.group(1) if match else None
+
+
 def get_media_element(url, caption=""):
     """Determines whether a link is a YouTube video or an Image and returns HTML dict."""
     url = clean_val(url)
@@ -77,12 +90,7 @@ def get_media_element(url, caption=""):
 
     # Handle YouTube Videos
     if "youtube.com" in url or "youtu.be" in url:
-        video_id = ""
-        if "watch?v=" in url:
-            video_id = url.split("watch?v=")[1].split("&")[0]
-        elif "youtu.be/" in url:
-            video_id = url.split("youtu.be/")[1].split("?")[0]
-        
+        video_id = extract_youtube_id(url)
         embed_url = f"https://www.youtube.com/embed/{video_id}" if video_id else url
 
         return {
@@ -95,12 +103,11 @@ def get_media_element(url, caption=""):
     
     # Handle Images
     else:
-        # Encode spaces in image names (e.g. "ARC 1.jpg" -> "ARC%201.jpg") to prevent broken HTML links
-        url = url.replace(' ', '%20')
+        encoded_url = encode_url_path(url)
         return {
             "type": "image",
             "html": f"""<div class="media-main">
-            <img src="{url}" alt="Project Media">
+            <img src="{encoded_url}" alt="Project Media">
             {caption_html}
           </div>"""
         }
@@ -111,13 +118,11 @@ def render_project_media_layout(media_items):
     if not media_items:
         return ""
     
-    # Single item
     if len(media_items) == 1:
         return f"""        <div class="media-layout single">
 {media_items[0]['html']}
         </div>\n"""
     
-    # Grid items (2 to 4 items format beautifully in this grid)
     combined_media = "\n".join([item['html'] for item in media_items])
     return f"""        <div class="media-grid-2x2">
 {combined_media}
@@ -126,12 +131,10 @@ def render_project_media_layout(media_items):
 
 def build_index_html(df_bio, df_main):
     """Generates index.html using 'bio' and 'main' tabs."""
-    
-    # --- BIO SECTION ---
     bio_row = df_bio.iloc[0] if not df_bio.empty else {}
     name = clean_val(bio_row.get('Name'), 'Noah Walsh')
     age = clean_val(bio_row.get('Age'), '17')
-    img_addr = clean_val(bio_row.get('img1 address'), 'images/me.png').replace(' ', '%20')
+    img_addr = encode_url_path(clean_val(bio_row.get('img1 address'), 'images/me.png'))
     img_caption = clean_val(bio_row.get('img1 caption'))
     education = clean_val(bio_row.get('Education'), 'Senior at Scripps Ranch High School')
     w_gpa = clean_val(bio_row.get('W_GPA'), '4.48')
@@ -177,7 +180,6 @@ def build_index_html(df_bio, df_main):
       </div>
     </section>"""
 
-    # --- WORK & LEADERSHIP SECTION ---
     work_cards_html = ""
     
     if 'Order' in df_main.columns:
@@ -191,7 +193,7 @@ def build_index_html(df_bio, df_main):
             
         category = clean_val(row.get('Category'), 'EXPERIENCE').upper()
         role = clean_val(row.get('Role'))
-        logo_addr = clean_val(row.get('Img1 address')).replace(' ', '%20')
+        logo_addr = encode_url_path(clean_val(row.get('Img1 address')))
         text_body = format_work_text(clean_val(row.get('Text')))
 
         card = f"""      <article class="card work-card">
@@ -289,7 +291,6 @@ def build_projects_html(df_projects, author_name="Noah Walsh"):
         disciplines = clean_val(row.get('Disciplines'))
         main_text = clean_val(row.get('Main Text'))
 
-        # Media items
         media_items = []
         for i in range(1, 5):
             addr_col = f'Vid or photo address {i}'
@@ -300,7 +301,6 @@ def build_projects_html(df_projects, author_name="Noah Walsh"):
 
         media_layout_html = render_project_media_layout(media_items)
 
-        # Header structure
         sub_header = f'        <h3 class="project-header-2"><em>{subtitle}</em></h3>\n' if subtitle else ''
         github_markup = f'        <p class="github-link">Github: <a href="{github_url}" target="_blank">{github_url}</a></p>\n' if github_url else ''
         formatted_body = format_text_block(main_text)
