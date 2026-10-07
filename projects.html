@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="index-style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -26,20 +26,18 @@
 
   <main class="container">
 
-    <div class="controls" style="margin-bottom: 2rem;">
-      <label for="sort-select" style="color: var(--text-muted); font-size: 0.9rem;">Sort projects by: </label>
-      <select id="sort-select" style="background: var(--card-bg); color: var(--text-main); border: 1px solid var(--card-border); padding: 0.4rem 0.8rem; border-radius: 6px;">
+    <div class="controls">
+      <label for="sort-select">Sort projects by: </label>
+      <select id="sort-select">
         <option value="pride">Pride Level (Highest First)</option>
         <option value="date">Creation Date (Newest First)</option>
       </select>
     </div>
 
-
     <div id="projects-container" class="projects-grid">
       <article class="card project-card" data-date="" data-pride="2">
-        <div class="media-layout">
-
-          <div class="media-main">
+        <div class="media-layout single">
+<div class="media-main">
             <iframe src="https://www.youtube.com/embed/ImYCyPfYhdE" title="Project Video" allowfullscreen></iframe>
             <p class="media-caption">Testing controls and degrees of freedom</p>
           </div>
@@ -61,20 +59,17 @@ Stick's Up, a 2D fencing game project</h2>
       </article>
 
       <article class="card project-card" data-date="" data-pride="1">
-        <div class="media-layout">
-
-          <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQWpO8XGNiNv9VSdlI2uLFSmj2KNq6Ze7KMWu67B2-539ilEZkOYMkY4IXYyWVbjUKeVIYg6Noo6Vuk6uRZ7eobwLmaApfagK-f-BoSEUNVHS4m6F-5MxpvrpKVSZJM-1Z4xNxvjLuMwNJmgHmkNeHqqrGD8MiP5DiYeymC_hJUIi4QdbjKLSy6sxwJyt1g3mg2bPgwygDnJ7DPcsVimi_UhfjW92ve7PnOvyb_M=w1280" alt="Project Media">
+        <div class="media-grid-2x2">
+<div class="media-main">
+            <img src="images/ARC%201.jpg" alt="Project Media">
             
           </div>
-
-          <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQXR8avbML8DZQWMjOpjtpT5BCYGTXRQiZ3ncq3LMr9ybNUgYdoAliSemn9FS2ywmuweu15B5LPrr7BGmserBl--zJEWV6bJz_5ZbZo8urrFON9m-LEXxaSGt-KpBrE1ZYKlx9S-odjNpKEtLHxhXpleHLJ67aMXd1y2zQ9YWU602SN3oa-64exfxbbHILqIEyCQ1RM1Dxzvrv_zEVVKLM_EW3BSc-r1ktL6v8fBDzI=w1280" alt="Project Media">
+<div class="media-main">
+            <img src="images/ARC%202.png" alt="Project Media">
             
           </div>
-
-          <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQWT4VZChJSOjduyzd2QDSlkLwufLc-85QbAvlFTz5dUJPiSVQ72-ZxZQo93zj3UbP5K8lr2I8wi-EuiAPopc3-mOHABx-vsexiIxZhuO_GEYT4R9Mm89zYT6oL3-QxJKAYiqqbtMrXg5vdqlu_V2-8GgakNi_S6fg03qne_hDLUTVgJsnSPJhQlG29tCdN3cu8rFlH-Edu9rojTh3pbimpRFY0zL0kRD00p9VlLZmI=w1280" alt="Project Media">
+<div class="media-main">
+            <img src="images/ARC%203.png" alt="Project Media">
             
           </div>
         </div>
@@ -93,14 +88,12 @@ Stick's Up, a 2D fencing game project</h2>
       </article>
 
       <article class="card project-card" data-date="" data-pride="3">
-        <div class="media-layout">
-
-          <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQVCWM4alHbPwIEZEEls0-K-Ce05bWHyt9Oeanudna3rtTpNAYWqAheQ5k25riArc1Ue8dank0NYJcLXLmbR3Vm7Ab0oRYXAM0e64pRmgyyKfkC66t9T8UQ3zFbNVSFg5UiZmS2HNt-T_h79gWc5DlawMPFszk9RU-7WrkHMxXiUIt13wJCaDF-NWqdFAbCxwi1yZq8zZXD93Jh1TvTaLrBQuHIzgoim19EGIp_8aFE=w1280" alt="Project Media">
+        <div class="media-grid-2x2">
+<div class="media-main">
+            <img src="images/Arm%201.png" alt="Project Media">
             
           </div>
-
-          <div class="media-main">
+<div class="media-main">
             <iframe src="https://www.youtube.com/embed/po0gLzeUUdQ" title="Project Video" allowfullscreen></iframe>
             
           </div>
@@ -120,25 +113,21 @@ Stick's Up, a 2D fencing game project</h2>
       </article>
 
       <article class="card project-card" data-date="" data-pride="6">
-        <div class="media-layout">
-
-          <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQUnauv51lAHtY6_04pF-xKHVSoJxXEnevCKSPkGyo91ERBaQhw5izWrMdGanOBcVb3-K0kE1dQA3Ht-qehRzlBUJPyhs5KjZmLrtYVdHIIx6tFZQEjx-i6QI2CY11bQ_slzUrMIqxw6tLQu_f1XhrlH45DNV56PhCZfcItf_gtgQtK9av8-ackeqe23m5UILladXBKPZJaMTxXmpw-ZbWCc3aYtao36zNZiL5edzPE=w1280" alt="Project Media">
+        <div class="media-grid-2x2">
+<div class="media-main">
+            <img src="images/Keeb%201.png" alt="Project Media">
             
           </div>
-
-          <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQXJhiQaT-szzFdSM0tNf4wRwngt6l2xeh5ngAOidMYa2UcC68gBzcH8zH7cbPkc5J7WP4ReU-K7hzBfKAVaVYnAfFtkY4_liZVqGf-NHozJN8lOJxahsZIWgFcG2admKsP70qbl5R6Z3KxMjaVeP21ogVdxxa-lGvJtuy3oJrg0fhJjPZd4JQwzruruBvSip7lGMakxG_bEViTG_ssAGz5XUxk0ChXHjnX90GYaQA8=w1280" alt="Project Media">
+<div class="media-main">
+            <img src="images/Keeb%202.jpg" alt="Project Media">
             
           </div>
-
-          <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQV3W5cpYBOnNB2Hq1gBAnhl-zNp8_bG2cuYCfxBudyMTO2wxVAay35vlUffMkPDiyceS_6jyhROZ7-ACR-36k1NBGuvzugGBF0UfvFLo3cAdRkxTORLFk0t83hzY4d3J2NZdo8eve4aUZiwC5OoGEozSk7l1wMQL5dCjV7x127MqpcyH3PPKKLpMwfHV-FYbCg768XMlanjTr7ih-XyhbxetWvAnYXUFsJewuHs=w1280" alt="Project Media">
+<div class="media-main">
+            <img src="images/Keeb%203.png" alt="Project Media">
             
           </div>
-
-          <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQW7kx3ct1pFiW1Wk739U7mKMldB81nceCESZEKyg8VTXWrEW0zusxxNOeCEpdl0kjHomDg7lp7TBVbzJTDFd9PgOXan1hriJGgCffyhpcH2Dv5y1zyzrq_Yj6IoaqYlgu9nZJPOZZf5ctu21nidriM1aj4HaH-P18_7Yf7IAznNCnZFd9k8lTfs8xIPVgQVb68PO2hTZ2skyBmgL7ZZWE4GouJosr1NrDG1o_ip=w1280" alt="Project Media">
+<div class="media-main">
+            <img src="images/Keeb%204.png" alt="Project Media">
             
           </div>
         </div>
@@ -157,20 +146,17 @@ Stick's Up, a 2D fencing game project</h2>
       </article>
 
       <article class="card project-card" data-date="" data-pride="8">
-        <div class="media-layout">
-
-          <div class="media-main">
+        <div class="media-grid-2x2">
+<div class="media-main">
             <iframe src="https://www.youtube.com/embed/KcXnXO6OZ_8" title="Project Video" allowfullscreen></iframe>
             <p class="media-caption">This is the only video I got before lending the mister out at OpenSauce; I did not get it back.</p>
           </div>
-
-          <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQV_PDBaR8MynYZs6xQmUL7jkCVJgkiYD9YI2OsMH95DYB_5tPCSzgCheq_GJqATiLIiBwKHZYDA2nUJd_5nTlNeqrul93N19WuT1fCIWt5WrmUBgBbGwwwVczpvaWj-wThI1_fmIjYwtt9P2GibHLkQVFhW2ajcfVnWOrRnqN4oRROUmXCmyij8xeekSge0FJedfimuNOHIXuUwmoG6sKgfRxQFq07y-tiCUyPElis=w1280" alt="Project Media">
+<div class="media-main">
+            <img src="images/Air%201.jpg" alt="Project Media">
             
           </div>
-
-          <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQVnm8dFYfpedhwJs-nraQRsqwlgoLGfUgT4BdZnHd7cZcPhudcV9zK9YonKwpGZ08bLuhReQNnWsIQ1p7MFRngm9jXbuoMmUHRuZU2sy0GQWtrS_ZupHf0Z4_5dF6QNlVNgJvGDJIsMf1EAkQqv_7UdFM0anV1y5jyGyviUI4Y5V3CadLSQ1xl1lrQXgEH2fT9CYaOVVQksyegOIQB4_y4_UFkC5iuclixyfJJL=w1280" alt="Project Media">
+<div class="media-main">
+            <img src="images/Air%202.png" alt="Project Media">
             
           </div>
         </div>
@@ -189,15 +175,13 @@ Stick's Up, a 2D fencing game project</h2>
       </article>
 
       <article class="card project-card" data-date="" data-pride="7">
-        <div class="media-layout">
-
-          <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQXFlxU0jC_q_SWjuezG2qbP-tP5gSuD9gzKGy806Tcqfmqa5N3oqaqF7_YNBkyXY-Ycz9SSGpWfgs9teQTdzw1PKS-r0Rljr6JQEZlvjz9FEjyhEB2Ve5dnh6bgofYn-Zr7pU38Q4RHrKabXlnClBqGChqlUjyhu0jNdwgPkvQFVX5cRGKOm9Z4mGPNL2bvcgo3ZJBAm3FEy0CiANh-_bzB1Yei-wo3h1JOfnDJ=w1280" alt="Project Media">
+        <div class="media-grid-2x2">
+<div class="media-main">
+            <img src="images/Balance%202.png" alt="Project Media">
             
           </div>
-
-          <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQWmREecphV55gyp3VCE8JVJje_nvxtGFDUO_HSeBbR1P5MsS3dCyYUrMabHy_lCcVMQEe3rdsFiKDcuEJITILCoHPG9Zpv0x1Iszr1V6LaST19Ph9bj6juOnEFS6topBv8OTSzizDG46_4niSJTx7eiYSwLG4yh6SMCHBDFqYTKwDGXWuHFElJ-mb-_hxp092zmunInsXI0nK0vv1eN9gI-w_TDVqVXRRPeSD4n7mY=w1280" alt="Project Media">
+<div class="media-main">
+            <img src="images/Balance%201.png" alt="Project Media">
             
           </div>
         </div>
@@ -216,15 +200,13 @@ Stick's Up, a 2D fencing game project</h2>
       </article>
 
       <article class="card project-card" data-date="" data-pride="4">
-        <div class="media-layout">
-
-          <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQW1218EwCso_c81Ojaw8u6KAN3iXxReYvoUK8atgHSRnlcMxIriwK1OcW2hfOhzaaXc8Vg1F50PTMSn0rQQiaNsveavgUccdld4YuZHIRKkUSs-JPCBDrgleDX3PKcCIC47NVFtFYGoKkRjrcQNN9Xtc8E9hB3imtAXxdU0LsjEOsXZSnoGoLbdcTFskpEtuZ18UVr06TYs2ukl-1BAmiZJv2zqNL7zma4EEAfL=w1280" alt="Project Media">
+        <div class="media-grid-2x2">
+<div class="media-main">
+            <img src="images/Flight%201.png" alt="Project Media">
             
           </div>
-
-          <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQU-iJbiwiIv3fjLP2KnM7lFBOYGZOOeLkKtmWfyBqEX7lxpX3wRMAqi6ACpLA-ZMouNuvZ_Ulttq6DaaV2-0tB2nH8u04PlYV79b_tKkQLK4FvUHawJm4MP6rvXvG6QifZZC9hXkcHnW8yTQ0tQtX4PCyes1PTwupq8oZpAI_6w2Qfrn-wLZfCQ1me6Hl5e4TIjcvWHwGv8bKK558Ti4BNU6wv4-2vyclEtRYl1MOY=w1280" alt="Project Media">
+<div class="media-main">
+            <img src="images/Flight%202.png" alt="Project Media">
             
           </div>
         </div>
@@ -243,10 +225,9 @@ Stick's Up, a 2D fencing game project</h2>
       </article>
 
       <article class="card project-card" data-date="" data-pride="5">
-        <div class="media-layout">
-
-          <div class="media-main">
-            <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQWfE-nQ4LZ6pgfsM1a5kF9C_IhADw-dlGy_4hswDh-vsaic0xyGivoJ1x4QEahJCSmLxh55EcAA7ZvbJ4zwLgGHaQ_rM6oGxILm0wN7VBHLKSIyjQrDv5zUvq1meCPPQZTlZQwjzpppFg1MzzmlwAINhCxXfIW46lT_ya5NBaXcEaIHBXlzay9UtOlXO59rjP9qUIqKCItCV2nEGL1LkiDMmhMyr31qXLG3aEls=w1280" alt="Project Media">
+        <div class="media-layout single">
+<div class="media-main">
+            <img src="images/Car%201.png" alt="Project Media">
             
           </div>
         </div>
